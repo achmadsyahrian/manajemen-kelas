@@ -2,11 +2,13 @@
    <div class="m-header">
       <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
       <a href="/" class="b-brand">
-         <img src="images/profile/logo-spp.png" width="160px" alt="" class="logo">
+         <img src="images/profile/logo-univ.png" width="40px" alt="" class="logo mr-2">
+         {{-- <h>IF MALAM A</h> --}}
       </a>
-      <a href="logout" class="mob-toggler">
-         <i class="fa-solid fa-right-from-bracket"></i>
-      </a>
+      <form id="logout-form" action="/sign-out" method="POST">
+         @csrf
+         <a href="{{ route('sign-out') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="mob-toggler"><i class="fa-solid fa-right-from-bracket text-white"></i></a>
+      </form>
    </div>
    <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
@@ -18,7 +20,7 @@
                <div class="dropdown-menu dropdown-menu-right profile-notification">
                   <div class="pro-head">
                      <img src="images/user/administrator.jpg" class="img-radius" alt="User-Profile-Image">
-                     <span>Achmad Syahrian</span>
+                     <span>{{ Str::limit(Auth::user()->name, 15, '...') }}</span>
                   </div>
                   <ul class="pro-body">
                      <li><a href="profile" class="dropdown-item"><i class="fa-solid fa-user"></i> Profile</a></li>

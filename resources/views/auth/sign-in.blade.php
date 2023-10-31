@@ -27,28 +27,24 @@
                   <form action="/sign-in" method="POST">
                      @csrf
 						   <h4 class="mb-3 f-w-800">SIGN IN</h4>
-                     @if (session()->has('login-failed'))
-                        <x-alert type="danger">{{ session('login-failed') }}</x-alert>
+                     @if (session()->has('error'))
+                        <x-alert type="danger">{{ session('error') }}</x-alert>
                      @endif
-                     @if (session()->has('sign-out-success'))
-                        <x-alert type="success">{{ session('sign-out-success') }}</x-alert>
+                     @if (session()->has('success'))
+                        <x-alert type="success">{{ session('success') }}</x-alert>
                      @endif
                      <div class="form-group mb-4">
                         <label class="floating-label" for="Username">Username</label>
                         <input type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" id="Username" name="username" autocomplete="off">
                         @error('username')
-                           <div class="invalid-feedback text-left">
-                              {{ $message }}
-                           </div>
+                           <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
                         @enderror
                      </div>
                      <div class="form-group mb-5">
                         <label class="floating-label" for="Password">Password</label>
                         <input type="password" class="form-control @error('password') is-invalid @enderror" id="Password" name="password">
                         @error('password')
-                           <div class="invalid-feedback text-left">
-                              {{ $message }}
-                           </div>
+                           <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
                         @enderror
                      </div>
                      <button class="btn btn-block btn-primary mb-4">Sign In</button>
