@@ -22,7 +22,14 @@
                   </div>
                   <ul class="pro-body">
                      <li><a href="profile" class="dropdown-item"><i class="fa-solid fa-user"></i> Profile</a></li>
-                     <li><a href="logout" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a></li>
+                     <form id="logout-form" action="/sign-out" method="POST">
+                        @csrf
+                        <li>
+                           {{-- onclick="event.preventDefault(); document.getElementById('logout-form').submit();" --}}
+                           {{-- Untuk menonaktifkan aksi default tag a agar menjadi submit button --}}
+                           <a href="{{ route('sign-out') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+                        </li>
+                     </form>
                   </ul>
                </div>
             </div>
