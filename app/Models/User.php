@@ -44,4 +44,15 @@ class User extends Authenticatable
     {
         return $this->hasOne(Student::class);
     }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            // Melakukan penghapusan kaskade pada entitas Student jika user dihapus
+            if ($user->student) {
+                $user->student->delete();
+            }
+        });
+    }
 }

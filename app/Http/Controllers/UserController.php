@@ -71,22 +71,21 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        User::destroy($user->id);
+        $user->destroy($user->id);  
         return redirect('/user')->with('success', 'User Berhasil Dihapus!');
     }
 
-    // Activate
-    public function updateStatus(User $user, Request $request)
+    // User Activation
+    public function activated(User $user)
     {
-        $status = $request->input('status');
-        if ($status == 'activate') {
-            $user->update(['status' => 'active']);  
-            return redirect('/user')->with('success', 'User Berhasil Diaktivasi!');
-        } elseif ($status == 'disable') {
-            $user->update(['status' => 'disabled']);  
-            return redirect('/user')->with('success', 'User Berhasil Dinonaktifkan!');
-        }
-        
+        $user->update(['status' => 'active']);  
+        return redirect('/user')->with('success', 'User Berhasil Diaktivasi!');
+    }
+
+    public function disable(User $user) 
+    {
+        $user->update(['status' => 'disabled']);  
+        return redirect('/user')->with('success', 'User Berhasil Dinonaktifkan!');
     }
     
 }

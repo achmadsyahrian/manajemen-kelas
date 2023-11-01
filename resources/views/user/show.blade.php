@@ -72,17 +72,11 @@
                      </div>
                   </div>
                   @if ($user->status == 'waiting') 
+                  <div class="row justify-content-around mt-4">
                      <x-form-status id="{{ $user->id }}"></x-form-status>
+                  </div>
                   @elseif ($user->status == 'disabled')
-                  <form action="/user/{{ $user->id }}" method="POST">
-                     <div class="row justify-content-around mt-4">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" name="status" value="disable" class="btn btn-danger">
-                           <i class="fas fa-trash-alt mr-2"></i>Delete
-                        </button>
-                     </div>
-                 </form>
+                     <x-form-delete id="{{ $user->id }}"></x-form-delete>
                   @endif
                </div>
             </div>
