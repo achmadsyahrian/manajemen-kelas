@@ -76,10 +76,17 @@ class UserController extends Controller
     }
 
     // Activate
-    public function activate(User $user)
+    public function updateStatus(User $user, Request $request)
     {
-        $user->update(['status' => 'active']);  
-        return redirect('/user')->with('success', 'User Berhasil Diaktivasi');
+        $status = $request->input('status');
+        if ($status == 'activate') {
+            $user->update(['status' => 'active']);  
+            return redirect('/user')->with('success', 'User Berhasil Diaktivasi!');
+        } elseif ($status == 'disable') {
+            $user->update(['status' => 'disabled']);  
+            return redirect('/user')->with('success', 'User Berhasil Dinonaktifkan!');
+        }
+        
     }
     
 }

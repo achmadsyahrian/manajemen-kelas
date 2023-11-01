@@ -21,4 +21,4 @@ Route::resource('/user', UserController::class)->middleware('auth')->names([
     'index' => 'user',
     'show' => 'user',
 ]);
-Route::patch('/user/activate/{user:id}', [UserController::class, 'activate'])->middleware('auth')->name('activate');
+Route::patch('/user/update-status/{user:id}', [UserController::class, 'updateStatus'])->middleware('auth')->name('activate');

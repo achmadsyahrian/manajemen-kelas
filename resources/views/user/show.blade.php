@@ -71,17 +71,18 @@
                         </div>
                      </div>
                   </div>
-                  <div class="row justify-content-around mt-4">
-                     <form action="/user/activate/{{ $user->id }}" method="POST">
+                  <form action="/user/update-status/{{ $user->id }}" method="POST">
+                     <div class="row justify-content-around mt-4">
                         @csrf
                         @method('PATCH')
-                        <button class="btn btn-success"><i class="fas fa-user-check mr-2"></i>Activate</button>
-                     </form>
-                     <form action="/user/disable/{{ $user->id }}" method="post">
-                        @csrf
-                        <button type="button" class="btn btn-danger"><i class="fas fa-user-times mr-2"></i>Disable</button>
-                     </form>
-                  </div>
+                        <button type="submit" name="status" value="activate" class="btn btn-success">
+                           <i class="fas fa-user-check mr-2"></i>Activate
+                        </button>
+                        <button type="submit" name="status" value="disable" class="btn btn-danger">
+                           <i class="fas fa-user-times mr-2"></i>Disable
+                        </button>
+                     </div>
+                  </form>
                </div>
             </div>
          </div>
