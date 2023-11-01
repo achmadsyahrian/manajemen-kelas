@@ -71,18 +71,19 @@
                         </div>
                      </div>
                   </div>
-                  <form action="/user/update-status/{{ $user->id }}" method="POST">
+                  @if ($user->status == 'waiting') 
+                     <x-form-status id="{{ $user->id }}"></x-form-status>
+                  @elseif ($user->status == 'disabled')
+                  <form action="/user/{{ $user->id }}" method="POST">
                      <div class="row justify-content-around mt-4">
                         @csrf
-                        @method('PATCH')
-                        <button type="submit" name="status" value="activate" class="btn btn-success">
-                           <i class="fas fa-user-check mr-2"></i>Activate
-                        </button>
+                        @method('DELETE')
                         <button type="submit" name="status" value="disable" class="btn btn-danger">
-                           <i class="fas fa-user-times mr-2"></i>Disable
+                           <i class="fas fa-trash-alt mr-2"></i>Delete
                         </button>
                      </div>
-                  </form>
+                 </form>
+                  @endif
                </div>
             </div>
          </div>

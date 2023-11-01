@@ -97,11 +97,6 @@
                               </td>
                               <td class="text-right">
                                  <x-button-edit id="{{ $user->id }}"></x-button-edit>
-                                 {{-- <form action="/user/{{ $user->id }}" method="POST" class="d-inline">
-                                    @method('delete')
-                                    @csrf
-                                    <x-button-delete></x-button-delete>
-                                 </form> --}}
                               </td>
                            </tr>
                         @endforeach
