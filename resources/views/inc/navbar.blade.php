@@ -3,9 +3,16 @@
       <div class="navbar-content scroll-div " >
          <div class="">
             <div class="main-menu-header">
-               <img class="img-radius" src="images/user/administrator.jpg" alt="User-Profile-Image">
+               <img class="img-radius" src="{{ asset("images/user/administrator.jpg") }}" alt="User-Profile-Image">
                <div class="user-details">
-                  <div id="more-details"> {{ Auth::user()->name }} <i class="fa fa-caret-down"></i></div>
+                  <div id="more-details"> 
+                     @if (Auth::user()->role == "mahasiswa")
+                        {{ Auth::user()->student->nim }} 
+                     @else
+                        {{ Auth::user()->name }} 
+                     @endif
+                     <i class="fa fa-caret-down"></i>
+                  </div>
                </div>
             </div>
             <div class="collapse" id="nav-user-link">
@@ -30,8 +37,8 @@
             <li class="nav-item pcoded-menu-caption">
                 <label>Data</label>
                 @if (Auth::user()->role == "administrator")
-                  <li class="nav-item">
-                     <a href="user" class="nav-link "><span class="pcoded-micon"><i class="fas fa-user-tie"></i></span><span class="pcoded-mtext">Users</span></a>
+                  <li class="nav-item {{ Request::is('user*') ? 'active' : '' }}">
+                     <a href="/user" class="nav-link"><span class="pcoded-micon"><i class="fas fa-user-tie"></i></span><span class="pcoded-mtext">Users</span></a>
                   </li>
                 @endif
                 <li class="nav-item pcoded-hasmenu">
@@ -64,7 +71,7 @@
          <div class="card text-center">
             <div class="card-block">
                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-               <img src="images/social-media/instagram.png" width="50px" alt="" class="logo">
+               <img src="{{ asset("images/social-media/instagram.png") }}" width="50px" alt="" class="logo">
                <h6 class="mt-3">Follow Me</h6>
                <p>To get some information about me</p>
                <a href="https://instagram.com/_achrian" target="_blank" class="btn btn-primary btn-sm text-white m-0">My Instagram</a>

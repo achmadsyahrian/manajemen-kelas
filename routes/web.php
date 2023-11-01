@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,3 +15,10 @@ Route::post('/sign-out', [AuthController::class, 'signout'])->middleware('auth')
 
 Route::get('/sign-up', [AuthController::class, 'signup'])->middleware('guest');
 Route::post('/sign-up', [AuthController::class, 'store'])->middleware('guest');
+
+// Users
+Route::resource('/user', UserController::class)->middleware('auth')->names([
+    'index' => 'user',
+    'show' => 'user',
+]);
+Route::patch('/user/activate/{user:id}', [UserController::class, 'activate'])->middleware('auth')->name('activate');

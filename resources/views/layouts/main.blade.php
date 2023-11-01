@@ -2,15 +2,18 @@
 <html lang="en">
 
 <head>
-    <title>School Status</title>
+    <title>Informatika Malam A</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Favicon icon -->
-    <link rel="icon" href="images/profile/icon-spp.png" type="image/x-icon">
+    <link rel="icon" href="{{ asset("images/profile/logo-univ.png") }}" type="image/x-icon">
 
     <!-- vendor css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset("css/style.css") }}">
+    
+   {{-- Sweet Alert --}}
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
 </head>
 <body class="">

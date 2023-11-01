@@ -38,4 +38,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Relasi Student
+    public function Student()
+    {
+        return $this->hasOne(Student::class);
+    }
 }

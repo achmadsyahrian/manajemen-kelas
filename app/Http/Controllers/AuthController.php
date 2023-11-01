@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,8 @@ class AuthController extends Controller
             'username' => 'required',
             'password' => 'required',
         ]);
-        if (Auth::attempt($validated)) {
+        $user = User::where('username', $validated['username'])->first();
+        if ($user && $user->status === "active" && Auth::attempt($validated)) {
             $request->session()->regenerate();
             return redirect()->intended('/');
         }
@@ -37,18 +39,26 @@ class AuthController extends Controller
     }
 
     public function store(Request $request) {
-        $validated = $request->validate([
+        // User
+        $validatedUser = $request->validate([
             'name' => 'required|max:255',
             'username' => 'required|min:5|unique:users|starts_with:@',
-            'email' => 'required|email:dns|unique:users',
-            'phone' => 'nullable|regex:/^[0-9]{11,}$/|unique:users', //nullable artinya tidak required, regex : 0-9
             'password' => 'required|min:5|max:255',
+            'role' => 'required',
         ]);
+        
         // Enkripsi
-        $validated['password'] = Hash::make($validated['password']);
-        // Role
-        $validated['role'] = "user";
-        User::create($validated);
+        $validatedUser['password'] = Hash::make($validatedUser['password']);
+        // Status
+        $validatedUser['status'] = "waiting";
+        $newUser = User::create($validatedUser);
+
+        // Student
+        $validatedStudent = $request->validate([
+            'nim' => 'required|regex:/^[0-9]{10,}$/', //nullable artinya tidak required, regex : 0-9
+        ]);
+        $validatedStudent['user_id'] = $newUser->id;
+        Student::create($validatedStudent);
 
         return redirect('/sign-in')->with('success', 'Registration Successfull!');
     }

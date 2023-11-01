@@ -5,19 +5,13 @@
       <!-- page statustic card start -->
       <div class="row">
          <div class="col-sm-12">
-            <div class="card py-2">
-               <div class="card-body">
-                  <div class="row align-items-center">
-                        <div class="col-8">
-                           <h4 class="text-c-green">472</h4>
-                           <h6 class="text-muted m-b-0">Successful Transaction</h6>
-                        </div>
-                        <div class="col-4 text-right">
-                           <i class="feather icon-check-circle f-28 text-c-green"></i>
-                        </div>
-                  </div>
-               </div>
-            </div>
+            <x-widget color="green">
+               <x-slot name="data">237</x-slot>
+               <x-slot name="title">Successful Transaction</x-slot>
+               <x-slot name="icon">
+                  <i class="feather icon-check-circle f-28 text-c-green"></i>
+               </x-slot>
+            </x-widget>
          </div>
          <div class="col-sm-6">
             <div class="card">

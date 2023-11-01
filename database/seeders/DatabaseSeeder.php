@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Administrator',
             'username' => '@administrator',
             'email' => 'achmadsyahrian1@gmail.com',
-            'password' => bcrypt('12345678'),
+            'password' => bcrypt('200806'),
             'role' => 'administrator',
-            'phone' => '0895423336075',
+            'status' => 'active',
         ]);
     }
 }

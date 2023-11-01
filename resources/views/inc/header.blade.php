@@ -2,7 +2,7 @@
    <div class="m-header">
       <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
       <a href="/" class="b-brand">
-         <img src="images/profile/logo-univ.png" width="40px" alt="" class="logo mr-2">
+         <img src="{{ asset("images/profile/logo-univ.png") }}" width="40px" alt="" class="logo mr-2">
          {{-- <h>IF MALAM A</h> --}}
       </a>
       <form id="logout-form" action="/sign-out" method="POST">
@@ -19,7 +19,7 @@
                </a>
                <div class="dropdown-menu dropdown-menu-right profile-notification">
                   <div class="pro-head">
-                     <img src="images/user/administrator.jpg" class="img-radius" alt="User-Profile-Image">
+                     <img src="{{ asset("images/user/administrator.jpg") }}" class="img-radius" alt="User-Profile-Image">
                      <span>{{ Str::limit(Auth::user()->name, 15, '...') }}</span>
                   </div>
                   <ul class="pro-body">
