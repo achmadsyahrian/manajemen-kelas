@@ -13,4 +13,22 @@ function showDeleteConfirmation(action, confirmationText, idForm) {
        }
    });
 }
+
+function previewImage() {
+    const image = document.getElementById('photo');
+    const imgPreview = document.getElementById('imgPreview');
+
+    // Hapus gambar lama
+    imgPreview.src = "";
+
+    if (image.files && image.files[0]) {
+       const reader = new FileReader();
+
+       reader.onload = function(e) {
+          imgPreview.src = e.target.result;
+       }
+
+       reader.readAsDataURL(image.files[0]);
+    }
+ }
  

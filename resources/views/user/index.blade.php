@@ -67,12 +67,12 @@
                                  <div class="d-inline-block align-middle">
                                        @if ($user->role == 'mahasiswa') 
                                           @if (!empty($user->student->photo))
-                                             <img src="images/students/{{ $user->student->photo }}" alt="user-image" class="img-radius wid-40 align-top m-r-15">
+                                             <x-image-round-profile photo="storage/{{ $user->student->photo }}"></x-image-round-profile>
                                           @else
-                                             <img src="images/user/default-user.png" alt="user-image" class="img-radius wid-40 align-top m-r-15">
+                                             <x-image-round-profile photo="images/user/default-user.png"></x-image-round-profile>
                                           @endif
                                        @elseif($user->role == 'user')
-                                          <img src="images/user/default-user-2.png" alt="user-image" class="img-radius wid-40 align-top m-r-15">
+                                          <x-image-round-profile photo="images/user/default-user-2.png"></x-image-round-profile>
                                        @endif
                                        <div class="d-inline-block">
                                           <h6>{{ $user->name }}</h6>

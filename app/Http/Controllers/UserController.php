@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -88,8 +89,15 @@ class UserController extends Controller
         if ($student) {
             $validatedStudent = $request->validate([
                 'nim' => 'required|size:10|regex:/^[0-9]{10}$/|unique:students,nim,' . $student->id,
+                'photo' => 'image|file|max:5120', //5mb max
             ]);
-
+            if ($request->hasFile('photo')) {
+                $newPhotoPath = $request->file('photo')->store('student-images', 'public');
+                if ($request->oldPhoto) {
+                    Storage::disk('public')->delete($request->oldPhoto);
+                }
+                $validatedStudent['photo'] = $newPhotoPath;
+            }
             $student->update($validatedStudent);
         }
     }

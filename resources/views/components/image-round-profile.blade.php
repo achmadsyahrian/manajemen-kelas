@@ -1,0 +1,1 @@
+<img src="{{ asset($photo) }}" alt="student-image" class="img-radius align-top m-r-15" style="width:40px; height:40px; object-fit:cover;">

@@ -2,7 +2,7 @@
 <script src="{{ asset("js/plugins/bootstrap.min.js") }}"></script>
 <script src="{{ asset("js/ripple.js") }}"></script>
 <script src="{{ asset("js/pcoded.min.js") }}"></script>
-<script src="{{ asset("js/sweetalert/delete-confirmation.js") }}"></script>
+<script src="{{ asset("js/main/me.js") }}"></script>
 <!-- Apex Chart -->
 <script src="{{ asset("js/plugins/apexcharts.min.js") }}"></script>
 

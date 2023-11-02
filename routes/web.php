@@ -24,6 +24,6 @@ Route::middleware(['auth'])->group(function () {;
         'index' => 'user',
         'show' => 'user',
     ]);
-    Route::patch('/user/activate/{user:id}', [UserController::class, 'activate'])->name('user.activate');
+    Route::patch('/user/activated/{user:id}', [UserController::class, 'activated'])->name('user.activated');
     Route::patch('/user/disable/{user:id}', [UserController::class, 'disable'])->name('user.disable');
 });
