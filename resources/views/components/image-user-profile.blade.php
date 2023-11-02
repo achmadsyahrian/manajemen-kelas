@@ -1,0 +1,1 @@
+<img src="{{ asset($photo) }}" class="img-radius" style="width:{{ $width }}; height:{{ $height }}; object-fit:cover;" alt="user-profile-image">

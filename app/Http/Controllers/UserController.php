@@ -89,7 +89,7 @@ class UserController extends Controller
         if ($student) {
             $validatedStudent = $request->validate([
                 'nim' => 'required|size:10|regex:/^[0-9]{10}$/|unique:students,nim,' . $student->id,
-                'photo' => 'image|file|max:5120', //5mb max
+                'photo' => 'image|file|max:5000', //5mb max
             ]);
             if ($request->hasFile('photo')) {
                 $newPhotoPath = $request->file('photo')->store('student-images', 'public');

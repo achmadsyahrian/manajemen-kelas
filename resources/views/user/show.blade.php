@@ -30,13 +30,9 @@
          <div class="card py-4">
             <div class="row justify-content-evenly">
                <div class="col-sm-4">
-                  @if ($user->role == 'mahasiswa') 
-                     @if (!empty($user->student->photo))
-                        <x-image-profile photo="storage/{{ $user->student->photo }}"></x-image-profile>
-                     @else
-                        <x-image-profile photo="images/user/default-user.png"></x-image-profile>
-                     @endif
-                  @elseif($user->role == 'user')
+                  @if ($user->role == 'mahasiswa' && !empty($user->student->photo)) 
+                     <x-image-profile photo="storage/{{ $user->student->photo }}"></x-image-profile>
+                  @else
                      <x-image-profile photo="images/user/default-user-2.png"></x-image-profile>
                   @endif
                   @if ($user->status == 'active')
@@ -45,8 +41,11 @@
                      @method('PUT')
                      <input type="hidden" name="oldPhoto" value="{{ $user->student->photo }}">
                      <div class="custom-file m-2">
-                        <input type="file" class="custom-file-input" name="photo" id="photo" onchange="previewImage()">
+                        <input type="file" class="custom-file-input @error('photo') is-invalid @enderror" name="photo" id="photo" onchange="previewImage()">
                         <label class="custom-file-label" for="photo">Choose file</label>
+                        @error('photo')
+                              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+                        @enderror
                      </div>
                   @endif
                </div>
