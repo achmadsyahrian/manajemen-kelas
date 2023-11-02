@@ -55,7 +55,7 @@ class AuthController extends Controller
 
         // Student
         $validatedStudent = $request->validate([
-            'nim' => 'required|regex:/^[0-9]{10,}$/', //nullable artinya tidak required, regex : 0-9
+            'nim' => 'required|regex:/^[0-9]{10,}$/|unique:students', //nullable artinya tidak required, regex : 0-9
         ]);
         $validatedStudent['user_id'] = $newUser->id;
         Student::create($validatedStudent);

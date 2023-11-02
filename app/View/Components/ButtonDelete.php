@@ -11,9 +11,10 @@ class ButtonDelete extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $idForm;
+    public function __construct($idForm)
     {
-        //
+        $this->idForm .= $idForm;
     }
 
     /**

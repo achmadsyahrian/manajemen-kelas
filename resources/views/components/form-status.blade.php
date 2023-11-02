@@ -1,7 +1,7 @@
 <form action="/user/activated/{{ $id }}" method="POST">
    @csrf
    @method('PATCH')
-   <button type="submit" name="status" value="activate" class="btn btn-success">
+   <button type="submit" name="status" class="btn btn-success">
       <i class="fas fa-user-check mr-2"></i>Activate
    </button>
 </form>

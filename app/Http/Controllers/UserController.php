@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $logUser = Auth::user();
-        $users = User::where('id', '!=', $logUser->id)->paginate(10);
+        $users = User::where('id', '!=', $logUser->id)->orderBy('name')->paginate(10);
         $usersActive = User::where('status', 'active');
         $usersWaiting = User::where('status', 'waiting');
         return view('user.index', [
@@ -61,10 +62,38 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(User $user, Request $request)
     {
-        //
+        $this->validateUserData($request, $user);
+        $this->validateStudentData($request, $user);
+
+        return redirect('/user')->with('success', 'User Berhasil Disimpan!');
     }
+
+    private function validateUserData($request, $user)
+    {
+        $validatedUser = $request->validate([
+            'name' => 'required|max:255',
+            'username' => 'required|min:5|starts_with:@|unique:users,username,' . $user->id,
+            'email' => 'nullable|email:dns|unique:users,email,' . $user->id,
+        ]);
+
+        $user->update($validatedUser);
+    }
+
+    private function validateStudentData($request, $user)
+    {
+        $student = $user->student;
+
+        if ($student) {
+            $validatedStudent = $request->validate([
+                'nim' => 'required|size:10|regex:/^[0-9]{10}$/|unique:students,nim,' . $student->id,
+            ]);
+
+            $student->update($validatedStudent);
+        }
+    }
+
 
     /**
      * Remove the specified resource from storage.

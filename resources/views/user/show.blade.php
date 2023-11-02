@@ -35,6 +35,15 @@
                         <img class="img-fluid d-block w-100" src="{{ asset('images/user/administrator.jpg') }}" alt="First slide">
                      </x-slot>
                   </x-image-profile>
+                  @if ($user->status == 'active')
+                  <form action="/user/{{ $user->id }}" method="POST" id="form-save" enctype="multipart/form-data"> {{-- form save --}}
+                     @csrf
+                     @method('PUT')
+                     <div class="custom-file m-2">
+                        <input type="file" class="custom-file-input" id="photo">
+                        <label class="custom-file-label" for="photo">Choose file</label>
+                     </div>
+                  @endif
                </div>
                <div class="col-sm-7 m-4">
                   <div class="row">
@@ -47,36 +56,58 @@
                      <div class="col-sm-6">
                         <div class="form-group mb-4">
                            <label class="floating-label" for="Name">Name</label>
-                           <input type="text" class="form-control" value="{{ old('username', $user->name) }}" id="Name" name="name" autocomplete="off">
+                           <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $user->name) }}" id="Name" name="name" autocomplete="off">
+                           @error('name')
+                              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+                           @enderror
                         </div>
                      </div>
                      <div class="col-sm-6">
                         <div class="form-group mb-4">
                            <label class="floating-label" for="Username">Username</label>
-                           <input type="text" class="form-control" value="{{ old('username', $user->username) }}" id="Username" name="username" autocomplete="off">
+                           <input type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username', $user->username) }}" id="Username" name="username" autocomplete="off">
+                           @error('username')
+                              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+                           @enderror
                         </div>
                      </div>
                      <div class="col-sm-6">
                         @if ($user->role == 'mahasiswa')
                            <div class="form-group mb-4">
                               <label class="floating-label" for="NIM">NIM</label>
-                              <input type="text" class="form-control" value="{{ old('nim', $user->student->nim) }}" id="NIM" name="nim" autocomplete="off">
+                              <input type="text" class="form-control @error('nim') is-invalid @enderror" value="{{ old('nim', $user->student->nim) }}" id="NIM" name="nim" autocomplete="off">
+                              @error('nim')
+                                 <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+                              @enderror
                            </div>
                         @endif
                      </div>
                      <div class="col-sm-6">
                         <div class="form-group mb-4">
                            <label class="floating-label" for="Email">Email</label>
-                           <input type="text" class="form-control" value="{{ old('email', $user->email) }}" id="Email" name="email" autocomplete="off">
+                           <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}" id="Email" name="email" autocomplete="off">
+                           @error('email')
+                              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+                           @enderror
                         </div>
                      </div>
                   </div>
                   @if ($user->status == 'waiting') 
-                  <div class="row justify-content-around mt-4">
-                     <x-form-status id="{{ $user->id }}"></x-form-status>
-                  </div>
+                     <div class="row justify-content-around mt-4">
+                        <x-form-status id="{{ $user->id }}"></x-form-status>
+                     </div>
                   @elseif ($user->status == 'disabled')
-                     <x-form-delete id="{{ $user->id }}"></x-form-delete>
+                     <div class="row justify-content-around mt-4">
+                        <x-user-delete id="{{ $user->id }}"></x-user-delete>
+                     </div>
+                  @else
+                     <div class="row justify-content-around mt-4">
+                        <button type="submit" name="status" value="activate" class="btn btn-success">
+                           <i class="fas fa-save mr-2"></i>Save
+                        </button>
+                        </form> {{-- form save --}}
+                        <x-user-delete id="{{ $user->id }}"></x-user-delete>
+                     </div>
                   @endif
                </div>
             </div>

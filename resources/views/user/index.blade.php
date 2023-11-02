@@ -96,7 +96,7 @@
                                  @endif
                               </td>
                               <td class="text-right">
-                                 <x-button-edit id="{{ $user->id }}"></x-button-edit>
+                                 <x-button-edit-icon id="{{ $user->id }}"></x-button-edit-icon>
                               </td>
                            </tr>
                         @endforeach

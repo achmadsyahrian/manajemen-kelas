@@ -1,3 +1,3 @@
-<button type="submit" class="btn btn-icon btn-outline-danger" style="width:30px; height:30px;" >
-    <i class="fas fa-trash-alt" style="font-size: 14px;"></i>
+<button type="button" class="btn btn-danger" onclick="showDeleteConfirmation('Ya, Hapus', 'Apakah Anda yakin ingin menghapus data ini?', 'user-delete')">
+    <i class="fas fa-trash-alt mr-2"></i>Delete
  </button>
