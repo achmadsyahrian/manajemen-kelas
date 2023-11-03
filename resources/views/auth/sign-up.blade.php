@@ -30,44 +30,30 @@
 								<label class="floating-label" for="Name">Name</label>
 								<input type="text" class="form-control @error('name') is-invalid @enderror" id="Name" autocomplete="off" name="name" value="{{ old('name') }}" placeholder="">
 								@error('name')
-									 <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+									 <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
 								@enderror
 							</div>
-							{{-- <div class="form-group mb-4">
-								<label class="floating-label" for="NIM">NIM</label>
-								<input type="text" class="form-control @error('nim') is-invalid @enderror" autocomplete="off" id="NIM" name="nim" value="{{ old('nim') }}" placeholder="">
-								@error('nim')
-									 <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-								@enderror
-							</div> --}}
 							<div class="form-group mb-4">
 								<label class="floating-label" for="Username">Username</label>
 								<input type="text" class="form-control @error('username') is-invalid @enderror" autocomplete="off" id="Username" value="{{ old('username') }}" name="username" placeholder="@username">
 								@error('username')
-									 <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+									 <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
 								@enderror
 							</div>
 							<div class="form-group mb-4">
 								<label class="floating-label" for="Email">Email</label>
 								<input type="text" class="form-control @error('email') is-invalid @enderror" id="Email" autocomplete="off" name="email" value="{{ old('email') }}" placeholder="">
 								@error('email')
-									 <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+									 <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
 								@enderror
 							</div>
 							<div class="form-group mb-5">
 								<label class="floating-label" for="Password">Password</label>
 								<input type="password" class="form-control @error('password') is-invalid @enderror" id="Password" name="password" placeholder="">
 								@error('password')
-									 <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+									 <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
 								@enderror
 							</div>
-							{{-- <div class="form-group mb-5">
-								<label class="floating-label" for="Role">Role</label>
-								<select class="form-control" id="Role" name="role">
-								  <option value="mahasiswa">Mahasiswa</option>
-								  <option value="user">User</option>
-								</select>
-							 </div> --}}
 							<button type="submit" class="btn btn-block btn-primary mb-4">Sign Up</button>
 						</form>
 						<p class="mb-2">Already have an account? <a href="sign-in" class="f-w-400">Sign In</a></p>

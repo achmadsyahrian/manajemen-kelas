@@ -22,6 +22,6 @@ class FormStatus extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.form-status');
+        return view('components.forms.form-status');
     }
 }

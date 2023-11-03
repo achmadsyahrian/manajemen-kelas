@@ -19,7 +19,7 @@
                </a>
                <div class="dropdown-menu dropdown-menu-right profile-notification">
                   <div class="pro-head">
-                     <x-image-user-profile photo="{{ $userProfilePhoto }}"></x-image-user-profile>
+                     <x-images.image-user-profile photo="{{ $userProfilePhoto }}" width="40px" height="40px"></x-images.image-user-profile>
                      <span>{{ Str::limit(Auth::user()->name, 15, '...') }}</span>
                   </div>
                   <ul class="pro-body">

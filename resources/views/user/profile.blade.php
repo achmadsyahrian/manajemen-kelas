@@ -6,11 +6,11 @@
             <div class="row justify-content-evenly">
                <div class="col-sm-4">
                   @if ($user->role == 'mahasiswa' && !empty($user->student->photo)) 
-                     <x-image-profile photo="storage/{{ $user->student->photo }}"></x-image-profile>
+                     <x-images.image-profile photo="storage/{{ $user->student->photo }}"></x-images.image-profile>
                   @elseif($user->role == 'administrator')
-                     <x-image-profile photo="images/user/administrator.jpg"></x-image-profile>
+                     <x-images.image-profile photo="images/user/administrator.jpg"></x-images.image-profile>
                   @else
-                     <x-image-profile photo="images/user/default-user-2.png"></x-image-profile>
+                     <x-images.image-profile photo="images/user/default-user-2.png"></x-images.image-profile>
                   @endif
                   <form action="/profile/{{ $user->id }}" method="POST" id="form-save" enctype="multipart/form-data"> {{-- form save --}}
                   @csrf
@@ -21,7 +21,7 @@
                         <input type="file" class="custom-file-input @error('photo') is-invalid @enderror" name="photo" id="photo" onchange="previewImage()">
                         <label class="custom-file-label" for="photo">Choose file</label>
                         @error('photo')
-                              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+                              <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
                         @enderror
                      </div>
                   @endif
@@ -35,41 +35,17 @@
                   </div>
                   <div class="row mt-4">
                      <div class="col-sm-6">
-                        <div class="form-group mb-4">
-                           <label class="floating-label" for="Name">Name</label>
-                           <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $user->name) }}" id="Name" name="name" autocomplete="off">
-                           @error('name')
-                              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-                           @enderror
-                        </div>
+                        <x-forms.form-input label="Name" name="name" value="{{ old('name', $user->name) }}"></x-forms.form-input>
                      </div>
                      <div class="col-sm-6">
-                        <div class="form-group mb-4">
-                           <label class="floating-label" for="Username">Username</label>
-                           <input type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username', $user->username) }}" id="Username" name="username" autocomplete="off" placeholder="@username">
-                           @error('username')
-                              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-                           @enderror
-                        </div>
+                        <x-forms.form-input label="Username" name="username" value="{{ old('username', $user->username) }}"></x-forms.form-input>
                      </div>
                      @if ($user->role == 'mahasiswa')
                         <div class="col-sm-6">
-                           <div class="form-group mb-4">
-                              <label class="floating-label" for="NIM">NIM</label>
-                              <input type="text" class="form-control @error('nim') is-invalid @enderror" value="{{ old('nim', $user->student->nim) }}" id="NIM" name="nim" autocomplete="off">
-                              @error('nim')
-                                 <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-                              @enderror
-                           </div>
+                           <x-forms.form-input label="NIM" name="nim" value="{{ old('nim', $user->student->nim) }}"></x-forms.form-input>
                         </div>
                         <div class="col-md-6">
-                           <div class="form-group mb-4">
-                              <label class="floating-label" for="phone">Phone</label>
-                              <input type="text" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone', $user->student->phone) }}" id="phone" name="phone" autocomplete="off">
-                              @error('phone')
-                                 <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-                              @enderror
-                           </div>
+                           <x-forms.form-input label="Phone" name="phone" value="{{ old('phone', $user->student->phone) }}"></x-forms.form-input>
                         </div>
                         <div class="col-md-6">
                            <div class="form-group mb-4">
@@ -81,13 +57,7 @@
                         </div>
                         @endif
                      <div class="col-sm-{{ $user->role == "mahasiswa" ? '6' : '12' }}">
-                        <div class="form-group mb-4">
-                           <label class="floating-label" for="Email">Email</label>
-                           <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}" id="Email" name="email" autocomplete="off">
-                           @error('email')
-                              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-                           @enderror
-                        </div>
+                        <x-forms.form-input label="Email" name="email" value="{{ old('email', $user->email) }}"></x-forms.form-input>
                      </div>
                   </div>
                   <div class="row justify-content-around mt-4">

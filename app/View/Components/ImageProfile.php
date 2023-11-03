@@ -22,6 +22,6 @@ class ImageProfile extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.image-profile');
+        return view('components.images.image-profile');
     }
 }

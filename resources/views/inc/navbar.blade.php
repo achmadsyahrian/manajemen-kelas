@@ -3,7 +3,7 @@
       <div class="navbar-content scroll-div " >
          <div class="">
             <div class="main-menu-header">
-               <x-image-user-profile photo="{{ $userProfilePhoto }}" width="60px" height="60px"></x-image-user-profile>
+               <x-images.image-user-profile photo="{{ $userProfilePhoto }}" width="60px" height="60px"></x-images.image-user-profile>
                <div class="user-details">
                   <div id="more-details"> 
                      @if (Auth::user()->role == "mahasiswa")

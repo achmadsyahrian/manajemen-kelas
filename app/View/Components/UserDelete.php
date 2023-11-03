@@ -22,6 +22,6 @@ class UserDelete extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.user-delete');
+        return view('components.forms.form-user-delete');
     }
 }

@@ -40,14 +40,14 @@
                         <label class="floating-label" for="Username">Username</label>
                         <input type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" id="Username" name="username" autocomplete="off">
                         @error('username')
-                           <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+                           <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
                         @enderror
                      </div>
                      <div class="form-group mb-5">
                         <label class="floating-label" for="Password">Password</label>
                         <input type="password" class="form-control @error('password') is-invalid @enderror" id="Password" name="password">
                         @error('password')
-                           <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+                           <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
                         @enderror
                      </div>
                      <button class="btn btn-block btn-primary mb-4">Sign In</button>

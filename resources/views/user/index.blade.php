@@ -76,9 +76,9 @@
                               <td>
                                  <div class="d-inline-block align-middle">
                                        @if ($user->role == 'mahasiswa' && !empty($user->student->photo)) 
-                                          <x-image-round-profile photo="storage/{{ $user->student->photo }}"></x-image-round-profile>
+                                          <x-images.image-round-profile photo="storage/{{ $user->student->photo }}"></x-images.image-round-profile>
                                        @else
-                                          <x-image-round-profile photo="images/user/default-user-2.png"></x-image-round-profile>
+                                          <x-images.image-round-profile photo="images/user/default-user-2.png"></x-images.image-round-profile>
                                        @endif
                                        <div class="d-inline-block">
                                           <h6>{{ $user->name }}</h6>

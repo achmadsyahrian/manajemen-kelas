@@ -22,6 +22,6 @@ class ImageRoundProfile extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.image-round-profile');
+        return view('components.images.image-round-profile');
     }
 }
