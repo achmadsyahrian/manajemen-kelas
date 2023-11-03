@@ -132,7 +132,7 @@ class UserController extends Controller
         if ($student) {
             $validatedStudent = $request->validate([
                 'nim' => 'required|size:10|regex:/^[0-9]{10}$/|unique:students,nim,' . $student->id,
-                'gender' => 'required',
+                'gender' => 'nullable',
                 'phone' => 'nullable|regex:/^[0-9]{11,}$/|unique:students,nim,' . $student->id,
                 'photo' => 'image|file|max:5000', //5mb max
             ]);

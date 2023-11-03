@@ -22,6 +22,6 @@ class ButtonDelete extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.button-delete');
+        return view('components.buttons.button-delete');
     }
 }

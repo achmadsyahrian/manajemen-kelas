@@ -17,12 +17,17 @@
             </div>
             <div class="collapse" id="nav-user-link">
                <ul class="list-unstyled">
-                  <li class="list-group-item"><a href="profile"><i class="fa-solid fa-user m-r-5"></i>View Profile</a></li>
+                  <a href="/profile">
+                     <li class="list-group-item"><i class="fa-solid fa-user m-r-5"></i> View Profile</li>
+                  </a>
+                  <a href="/profile/change-password">
+                     <li class="list-group-item"><i class="fas fa-key m-r-5"></i> Change Password</li>
+                  </a>
                   <form id="logout-form" action="/sign-out" method="POST">
                      @csrf
-                     <li class="list-group-item">
-                        <a href="{{ route('sign-out') }}" onclick="event.preventDefault(); showDeleteConfirmation('Ya, Log Out', 'Apakah Anda yakin ingin logout?', 'logout-form');"><i class="fa-solid fa-right-from-bracket m-r-5"></i> Log Out</a>
-                     </li>
+                     <a href="{{ route('sign-out') }}" onclick="event.preventDefault(); showDeleteConfirmation('Ya, Log Out', 'Apakah Anda yakin ingin logout?', 'logout-form');">
+                        <li class="list-group-item"><i class="fa-solid fa-right-from-bracket m-r-5"></i> Log Out</li>
+                     </a>
                   </form>
                </ul>
             </div>

@@ -22,6 +22,6 @@ class ButtonEditIcon extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.button-edit-icon');
+        return view('components.buttons.button-edit-icon');
     }
 }
