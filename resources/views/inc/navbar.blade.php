@@ -21,7 +21,7 @@
                   <form id="logout-form" action="/sign-out" method="POST">
                      @csrf
                      <li class="list-group-item">
-                        <a href="{{ route('sign-out') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa-solid fa-right-from-bracket m-r-5"></i> Log Out</a>
+                        <a href="{{ route('sign-out') }}" onclick="event.preventDefault(); showDeleteConfirmation('Ya, Log Out', 'Apakah Anda yakin ingin logout?', 'logout-form');"><i class="fa-solid fa-right-from-bracket m-r-5"></i> Log Out</a>
                      </li>
                   </form>
                </ul>

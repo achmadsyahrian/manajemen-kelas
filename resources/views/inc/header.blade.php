@@ -7,7 +7,7 @@
       </a>
       <form id="logout-form" action="/sign-out" method="POST">
          @csrf
-         <a href="{{ route('sign-out') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="mob-toggler"><i class="fa-solid fa-right-from-bracket text-white"></i></a>
+         <a href="{{ route('sign-out') }}" onclick="event.preventDefault(); showDeleteConfirmation('Ya, Log Out', 'Apakah Anda yakin ingin logout?', 'logout-form');" class="mob-toggler"><i class="fa-solid fa-right-from-bracket text-white"></i></a>
       </form>
    </div>
    <div class="collapse navbar-collapse">
