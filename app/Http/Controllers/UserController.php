@@ -10,9 +10,17 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    protected $userProfilePhoto;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->userProfilePhoto = $this->getUserProfilePhoto(Auth::user());
+            return $next($request);
+        });
+    }
+
+     
     public function index()
     {
         $logUser = Auth::user();
@@ -23,6 +31,7 @@ class UserController extends Controller
             'users' => $users,
             'usersActive' => $usersActive,
             'usersWaiting' => $usersWaiting,
+            'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }
 
@@ -49,6 +58,7 @@ class UserController extends Controller
     {
         return view('user.show', [
             'user' => $user,
+            'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }
 

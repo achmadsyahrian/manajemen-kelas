@@ -19,13 +19,7 @@
                </a>
                <div class="dropdown-menu dropdown-menu-right profile-notification">
                   <div class="pro-head">
-                     @if (Auth::user()->role == 'mahasiswa' && !empty(Auth::user()->student->photo))
-                        <x-image-user-profile photo="storage/{{ Auth::user()->student->photo }}"></x-image-user-profile>
-                     @elseif (Auth::user()->role == 'administrator')
-                        <x-image-user-profile photo="images/user/administrator.jpg"></x-image-user-profile>
-                     @else
-                        <x-image-user-profile photo="images/user/default-user-2.png"></x-image-user-profile>
-                     @endif
+                     <x-image-user-profile photo="{{ $userProfilePhoto }}"></x-image-user-profile>
                      <span>{{ Str::limit(Auth::user()->name, 15, '...') }}</span>
                   </div>
                   <ul class="pro-body">
