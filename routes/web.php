@@ -26,4 +26,8 @@ Route::middleware(['auth'])->group(function () {;
     ]);
     Route::patch('/user/activated/{user:id}', [UserController::class, 'activated'])->name('user.activated');
     Route::patch('/user/disable/{user:id}', [UserController::class, 'disable'])->name('user.disable');
+
+    // Profile
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+    Route::put('/profile/{user:id}', [UserController::class, 'updateProfile']);
 });

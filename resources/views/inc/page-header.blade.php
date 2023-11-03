@@ -12,14 +12,6 @@
                   Informatika Malam A
                </h4>   
             </div>
-            <ul class="breadcrumb">
-               <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
-               <li class="breadcrumb-item">
-                  <a href="/{{ Route::currentRouteName() }}">
-                     {{ Str::ucfirst(Route::currentRouteName()) }}
-                  </a>
-               </li>
-            </ul>
          </div>   
       </div>
    </div>

@@ -78,6 +78,15 @@ class UserController extends Controller
         ]);
     }
 
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('user.profile', [
+            'user' => $user,
+            'userProfilePhoto' => $this->userProfilePhoto
+        ]);
+    }
+    
     /**
      * Show the form for editing the specified resource.
      */
@@ -95,6 +104,14 @@ class UserController extends Controller
         $this->validateStudentData($request, $user);
 
         return redirect('/user')->with('success', 'User Berhasil Disimpan!');
+    }
+
+    public function updateProfile(User $user, Request $request)
+    {
+        $this->validateUserData($request, $user);
+        $this->validateStudentData($request, $user);
+
+        return redirect('/')->with('success', 'Data Berhasil Disimpan!');
     }
 
     private function validateUserData($request, $user)
@@ -115,6 +132,8 @@ class UserController extends Controller
         if ($student) {
             $validatedStudent = $request->validate([
                 'nim' => 'required|size:10|regex:/^[0-9]{10}$/|unique:students,nim,' . $student->id,
+                'gender' => 'required',
+                'phone' => 'nullable|regex:/^[0-9]{11,}$/|unique:students,nim,' . $student->id,
                 'photo' => 'image|file|max:5000', //5mb max
             ]);
             if ($request->hasFile('photo')) {
