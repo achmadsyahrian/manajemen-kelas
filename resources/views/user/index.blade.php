@@ -28,6 +28,16 @@
             </x-widget>
          </div>
       </div>
+      <div class="row justify-content-center">
+         <div class="col-sm-12">
+            <a href="user/create">
+               <button type="button" class="btn btn-primary btn-block">
+                  Add User<i class="fas fa-plus-circle mr-2"></i>
+                  {{-- <i class="feather mr-2 icon-thumbs-up"></i> --}}
+               </button>
+            </a>
+         </div>
+     </div>
       <div class="row mt-3">
          <div class="col-xl-12 col-md-12">
             <div class="card table-card">

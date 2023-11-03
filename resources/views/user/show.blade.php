@@ -71,7 +71,7 @@
                      <div class="col-sm-6">
                         <div class="form-group mb-4">
                            <label class="floating-label" for="Username">Username</label>
-                           <input type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username', $user->username) }}" id="Username" name="username" autocomplete="off">
+                           <input type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username', $user->username) }}" id="Username" name="username" autocomplete="off" placeholder="@username">
                            @error('username')
                               <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
                            @enderror
@@ -108,7 +108,7 @@
                      </div>
                   @else
                      <div class="row justify-content-around mt-4">
-                        <button type="submit" name="status" value="activate" class="btn btn-success">
+                        <button type="submit" class="btn btn-success">
                            <i class="fas fa-save mr-2"></i>Save
                         </button>
                         </form> {{-- form save --}}

@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -40,7 +41,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create', [
+            'userProfilePhoto' => $this->userProfilePhoto
+        ]);
     }
 
     /**
@@ -48,7 +51,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validasi
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'username' => 'required|min:5|starts_with:@|unique:users',
+            'email' => 'nullable|email:dns|unique:users',
+        ]);
+        // password
+        $validated['password'] = Hash::make('12345678');
+        // Role
+        $validated['role'] = 'user';
+        // Status
+        $validated['status'] = 'active';
+        User::create($validated);
+        return redirect('/user')->with('success', 'User Berhasil Ditambahkan!');
     }
 
     /**
