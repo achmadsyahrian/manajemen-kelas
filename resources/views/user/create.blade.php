@@ -46,9 +46,7 @@
                         </div>
                      </div>
                      <div class="row justify-content-around mt-4">
-                        <button type="submit" name="status" value="activate" class="btn btn-success">
-                           <i class="fas fa-save mr-2"></i>Save
-                        </button>
+                        <x-buttons.button-save></x-buttons.button-save>
                      </div>
                   </form>
                </div>

@@ -108,9 +108,7 @@
                      </div>
                   @else
                      <div class="row justify-content-around mt-4">
-                        <button type="submit" class="btn btn-success">
-                           <i class="fas fa-save mr-2"></i>Save
-                        </button>
+                        <x-buttons.button-save></x-buttons.button-save>
                         </form> {{-- form save --}}
                         <x-user-delete id="{{ $user->id }}"></x-user-delete>
                      </div>
