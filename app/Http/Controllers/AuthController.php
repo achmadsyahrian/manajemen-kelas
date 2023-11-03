@@ -20,9 +20,11 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
         $user = User::where('username', $validated['username'])->first();
+        $namaLengkap = explode(' ', $user->name);
+        $firstName = $namaLengkap[0]; // Kata pertama
         if ($user && $user->status === "active" && Auth::attempt($validated)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended('/')->with('success','Selamat Datang '.$firstName);
         }
         return back()->with('error', 'Login Gagal!');
     }
@@ -40,25 +42,19 @@ class AuthController extends Controller
 
     public function store(Request $request) {
         // User
-        $validatedUser = $request->validate([
+        $validated = $request->validate([
             'name' => 'required|max:255',
             'username' => 'required|min:5|unique:users|starts_with:@',
             'password' => 'required|min:5|max:255',
-            'role' => 'required',
+            'email' => 'nullable|email:dns|unique:users'
         ]);
         
         // Enkripsi
-        $validatedUser['password'] = Hash::make($validatedUser['password']);
+        $validated['password'] = Hash::make($validated['password']);
         // Status
-        $validatedUser['status'] = "waiting";
-        $newUser = User::create($validatedUser);
-
-        // Student
-        $validatedStudent = $request->validate([
-            'nim' => 'required|size:10|regex:/^[0-9]{10,}$/|unique:students', //nullable artinya tidak required, regex : 0-9
-        ]);
-        $validatedStudent['user_id'] = $newUser->id;
-        Student::create($validatedStudent);
+        $validated['status'] = "waiting";
+        $validated['role'] = "user";
+        User::create($validated);
 
         return redirect('/sign-in')->with('regisSuccess', 'Akan segera dikonfirmasi oleh Admin');
     }

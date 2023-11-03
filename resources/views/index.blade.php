@@ -1,8 +1,10 @@
 @extends('layouts.main')
 @section('content')
+@if (session()->has('success')) 
+   <x-sweetalert type="success" head="Success!" body="{{ session('success') }}" ></x-sweetalert>
+@endif
 <div class="row">
    <div class="col-lg-12 col-md-12">
-      <!-- page statustic card start -->
       <div class="row">
          <div class="col-sm-12">
             <x-widget color="green">
@@ -68,7 +70,6 @@
             </div>
          </div>
       </div>
-      <!-- page statustic card end -->
    </div>
 </div>
 @endsection

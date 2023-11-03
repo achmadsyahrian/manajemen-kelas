@@ -34,7 +34,7 @@
                      @elseif (session()->has('success'))
                         <x-sweetalert type="success" head="Success!" body="{{ session('success') }}" ></x-sweetalert>
                      @elseif(session()->has('regisSuccess'))
-                        <x-sweetalert type="success" head="Akun berhasil didaftar!" body="{{ session('regisSuccess') }}" ></x-sweetalert>
+                        <x-sweetalert type="success" head="Akun Berhasil Didaftarkan!" body="{{ session('regisSuccess') }}" ></x-sweetalert>
                      @endif
                      <div class="form-group mb-4">
                         <label class="floating-label" for="Username">Username</label>

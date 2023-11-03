@@ -39,14 +39,16 @@
                   <form action="/user/{{ $user->id }}" method="POST" id="form-save" enctype="multipart/form-data"> {{-- form save --}}
                      @csrf
                      @method('PUT')
-                     <input type="hidden" name="oldPhoto" value="{{ $user->student->photo }}">
-                     <div class="custom-file m-2">
-                        <input type="file" class="custom-file-input @error('photo') is-invalid @enderror" name="photo" id="photo" onchange="previewImage()">
-                        <label class="custom-file-label" for="photo">Choose file</label>
-                        @error('photo')
-                              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-                        @enderror
-                     </div>
+                     @if ($user->role == 'mahasiswa')                         
+                        <input type="hidden" name="oldPhoto" value="{{ $user->student->photo }}">
+                        <div class="custom-file m-2">
+                           <input type="file" class="custom-file-input @error('photo') is-invalid @enderror" name="photo" id="photo" onchange="previewImage()">
+                           <label class="custom-file-label" for="photo">Choose file</label>
+                           @error('photo')
+                                 <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+                           @enderror
+                        </div>
+                     @endif
                   @endif
                </div>
                <div class="col-sm-7 m-4">
@@ -86,7 +88,7 @@
                            </div>
                         @endif
                      </div>
-                     <div class="col-sm-6">
+                     <div class="col-sm-{{ $user->role == "mahasiswa" ? '6' : '12' }}">
                         <div class="form-group mb-4">
                            <label class="floating-label" for="Email">Email</label>
                            <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}" id="Email" name="email" autocomplete="off">

@@ -33,17 +33,24 @@
 									 <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
 								@enderror
 							</div>
-							<div class="form-group mb-4">
+							{{-- <div class="form-group mb-4">
 								<label class="floating-label" for="NIM">NIM</label>
 								<input type="text" class="form-control @error('nim') is-invalid @enderror" autocomplete="off" id="NIM" name="nim" value="{{ old('nim') }}" placeholder="">
 								@error('nim')
 									 <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
 								@enderror
-							</div>
+							</div> --}}
 							<div class="form-group mb-4">
 								<label class="floating-label" for="Username">Username</label>
 								<input type="text" class="form-control @error('username') is-invalid @enderror" autocomplete="off" id="Username" value="{{ old('username') }}" name="username" placeholder="@username">
 								@error('username')
+									 <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+								@enderror
+							</div>
+							<div class="form-group mb-4">
+								<label class="floating-label" for="Email">Email</label>
+								<input type="text" class="form-control @error('email') is-invalid @enderror" id="Email" autocomplete="off" name="email" value="{{ old('email') }}" placeholder="">
+								@error('email')
 									 <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
 								@enderror
 							</div>
@@ -54,13 +61,13 @@
 									 <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
 								@enderror
 							</div>
-							<div class="form-group mb-5">
+							{{-- <div class="form-group mb-5">
 								<label class="floating-label" for="Role">Role</label>
 								<select class="form-control" id="Role" name="role">
 								  <option value="mahasiswa">Mahasiswa</option>
 								  <option value="user">User</option>
 								</select>
-							 </div>
+							 </div> --}}
 							<button type="submit" class="btn btn-block btn-primary mb-4">Sign Up</button>
 						</form>
 						<p class="mb-2">Already have an account? <a href="sign-in" class="f-w-400">Sign In</a></p>
