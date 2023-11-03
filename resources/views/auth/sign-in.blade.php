@@ -36,20 +36,8 @@
                      @elseif(session()->has('regisSuccess'))
                         <x-sweetalert type="success" head="Akun Berhasil Didaftarkan!" body="{{ session('regisSuccess') }}" ></x-sweetalert>
                      @endif
-                     <div class="form-group mb-4">
-                        <label class="floating-label" for="Username">Username</label>
-                        <input type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" id="Username" name="username" autocomplete="off">
-                        @error('username')
-                           <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
-                        @enderror
-                     </div>
-                     <div class="form-group mb-5">
-                        <label class="floating-label" for="Password">Password</label>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="Password" name="password">
-                        @error('password')
-                           <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
-                        @enderror
-                     </div>
+                     <x-forms.form-input label="Username" name="username" value="{{ old('username') }}"></x-forms.form-input>
+                     <x-forms.form-input label="Password" name="password" value="{{ old('password') }}"></x-forms.form-input>
                      <button class="btn btn-block btn-primary mb-4">Sign In</button>
                   </form>
 						<p class="mb-0 text-muted">Don't have an account? <a href="sign-up" class="f-w-400">Sign Up</a></p>

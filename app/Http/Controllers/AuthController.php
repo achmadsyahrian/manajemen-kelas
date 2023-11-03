@@ -20,9 +20,9 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
         $user = User::where('username', $validated['username'])->first();
-        $namaLengkap = explode(' ', $user->name);
-        $firstName = $namaLengkap[0]; // Kata pertama
         if ($user && $user->status === "active" && Auth::attempt($validated)) {
+            $namaLengkap = explode(' ', $user->name);
+            $firstName = $namaLengkap[0]; // Kata pertama
             $request->session()->regenerate();
             return redirect()->intended('/')->with('success','Selamat Datang '.$firstName);
         }

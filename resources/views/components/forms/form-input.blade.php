@@ -1,15 +1,17 @@
 <div class="form-group mb-4">
     <label class="floating-label" for="{{ $name }}">
         @if ($name == 'name')
-            <i class="fas fa-user mr-1"></i>
+            <i class="fas fa-user"></i>
         @elseif ($name == 'username')
-            <i class="fas fa-at mr-1"></i>
+            <i class="fas fa-at"></i>
         @elseif ($name == 'email')
-            <i class="fas fa-envelope mr-1"></i>
+            <i class="fas fa-envelope"></i>
         @elseif ($name == 'nim')
             <i class="fas fa-address-card"></i>
         @elseif ($name == 'password')
             <i class="fas fa-lock"></i>
+        @elseif ($name == 'phone')
+            <i class="fas fa-phone"></i>
         @endif
         {{ $label }}
     </label>

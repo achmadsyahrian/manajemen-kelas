@@ -26,34 +26,10 @@
 						<form action="/sign-up" method="POST">
 							@csrf
 							<h4 class="mb-3 f-w-800">SIGN UP</h4>
-							<div class="form-group mb-4">
-								<label class="floating-label" for="Name">Name</label>
-								<input type="text" class="form-control @error('name') is-invalid @enderror" id="Name" autocomplete="off" name="name" value="{{ old('name') }}" placeholder="">
-								@error('name')
-									 <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
-								@enderror
-							</div>
-							<div class="form-group mb-4">
-								<label class="floating-label" for="Username">Username</label>
-								<input type="text" class="form-control @error('username') is-invalid @enderror" autocomplete="off" id="Username" value="{{ old('username') }}" name="username" placeholder="@username">
-								@error('username')
-									 <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
-								@enderror
-							</div>
-							<div class="form-group mb-4">
-								<label class="floating-label" for="Email">Email</label>
-								<input type="text" class="form-control @error('email') is-invalid @enderror" id="Email" autocomplete="off" name="email" value="{{ old('email') }}" placeholder="">
-								@error('email')
-									 <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
-								@enderror
-							</div>
-							<div class="form-group mb-5">
-								<label class="floating-label" for="Password">Password</label>
-								<input type="password" class="form-control @error('password') is-invalid @enderror" id="Password" name="password" placeholder="">
-								@error('password')
-									 <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
-								@enderror
-							</div>
+                     <x-forms.form-input label="Name" name="name" value="{{ old('name') }}"></x-forms.form-input>
+                     <x-forms.form-input label="Username" name="username" value="{{ old('username') }}"></x-forms.form-input>
+                     <x-forms.form-input label="Email" name="email" value="{{ old('email') }}"></x-forms.form-input>
+                     <x-forms.form-input label="Password" name="password" value="{{ old('password') }}"></x-forms.form-input>
 							<button type="submit" class="btn btn-block btn-primary mb-4">Sign Up</button>
 						</form>
 						<p class="mb-2">Already have an account? <a href="sign-in" class="f-w-400">Sign In</a></p>
