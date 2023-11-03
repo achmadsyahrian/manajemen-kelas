@@ -29,7 +29,7 @@
                         <li>
                            {{-- onclick="event.preventDefault(); document.getElementById('logout-form').submit();" --}}
                            {{-- Untuk menonaktifkan aksi default tag a agar menjadi submit button --}}
-                           <a href="{{ route('sign-out') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+                           <a href="{{ route('sign-out') }}" onclick="event.preventDefault(); showDeleteConfirmation('Ya, Log Out', 'Apakah Anda yakin ingin logout?', 'logout-form');" class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
                         </li>
                      </form>
                   </ul>

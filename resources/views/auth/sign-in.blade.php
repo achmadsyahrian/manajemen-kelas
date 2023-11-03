@@ -13,6 +13,8 @@
 	<link rel="icon" href="images/profile/icon-spp.png" type="image/x-icon">
 	<!-- vendor css -->
 	<link rel="stylesheet" href="css/style.css">
+   {{-- Sweet Alert --}}
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <!-- [ auth-signin ] start -->
@@ -28,10 +30,11 @@
                      @csrf
 						   <h4 class="mb-3 f-w-800">SIGN IN</h4>
                      @if (session()->has('error'))
-                        <x-alert type="danger">{{ session('error') }}</x-alert>
-                     @endif
-                     @if (session()->has('success'))
-                        <x-alert type="success">{{ session('success') }}</x-alert>
+                        <x-sweetalert type="error" head="Error!" body="{{ session('error') }}" ></x-sweetalert>
+                     @elseif (session()->has('success'))
+                        <x-sweetalert type="success" head="Success!" body="{{ session('success') }}" ></x-sweetalert>
+                     @elseif(session()->has('regisSuccess'))
+                        <x-sweetalert type="success" head="Akun berhasil didaftar!" body="{{ session('regisSuccess') }}" ></x-sweetalert>
                      @endif
                      <div class="form-group mb-4">
                         <label class="floating-label" for="Username">Username</label>

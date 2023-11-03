@@ -24,14 +24,14 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('/');
         }
-        return back()->with('error', 'Sign In Failed!');
+        return back()->with('error', 'Login Gagal!');
     }
     
     public function signout(Request $request) {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/sign-in')->with('success', 'Log Out successful!');
+        return redirect('/sign-in')->with('success', 'Anda Berhasil Logout!');
     }
     
     public function signup() {
@@ -55,12 +55,12 @@ class AuthController extends Controller
 
         // Student
         $validatedStudent = $request->validate([
-            'nim' => 'required|regex:/^[0-9]{10,}$/|unique:students', //nullable artinya tidak required, regex : 0-9
+            'nim' => 'required|size:10|regex:/^[0-9]{10,}$/|unique:students', //nullable artinya tidak required, regex : 0-9
         ]);
         $validatedStudent['user_id'] = $newUser->id;
         Student::create($validatedStudent);
 
-        return redirect('/sign-in')->with('success', 'Registration Successfull!');
+        return redirect('/sign-in')->with('regisSuccess', 'Akan segera dikonfirmasi oleh Admin');
     }
     
 }
