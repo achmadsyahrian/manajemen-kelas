@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +27,8 @@ Route::middleware(['auth'])->group(function () {;
     Route::patch('/user/disable/{user:id}', [UserController::class, 'disable'])->name('user.disable');
 
     // Profile
-    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
-    Route::put('/profile/{user:id}', [UserController::class, 'updateProfile']);
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
+    Route::put('/profile/{user:id}', [ProfileController::class, 'update']);
 
     // Change Password
     Route::get('/profile/change-password', [PasswordController::class, 'edit']);

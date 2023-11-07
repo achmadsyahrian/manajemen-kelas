@@ -77,15 +77,6 @@ class UserController extends Controller
             'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }
-
-    public function profile()
-    {
-        $user = Auth::user();
-        return view('user.profile.profile', [
-            'user' => $user,
-            'userProfilePhoto' => $this->userProfilePhoto
-        ]);
-    }
     
     /**
      * Show the form for editing the specified resource.
@@ -114,7 +105,7 @@ class UserController extends Controller
         return redirect('/')->with('success', 'Data Berhasil Disimpan!');
     }
 
-    private function validateUserData($request, $user)
+    public function validateUserData($request, $user)
     {
         $validatedUser = $request->validate([
             'name' => 'required|max:255',
@@ -125,7 +116,7 @@ class UserController extends Controller
         $user->update($validatedUser);
     }
 
-    private function validateStudentData($request, $user)
+    public function validateStudentData($request, $user)
     {
         $student = $user->student;
 
