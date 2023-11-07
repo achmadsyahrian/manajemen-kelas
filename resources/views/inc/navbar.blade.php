@@ -46,13 +46,14 @@
                      <a href="/user" class="nav-link"><span class="pcoded-micon"><i class="fas fa-user-tie"></i></span><span class="pcoded-mtext">Users</span></a>
                   </li>
                 @endif
-                <li class="nav-item pcoded-hasmenu">
+                <li class="nav-item pcoded-hasmenu {{ Request::is('student*') || Request::is('teacher*') ? 'active' : '' }}
+                ">
                     <a href="#" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa-school-flag"></i></span><span class="pcoded-mtext">Kelas</span></a>
                     <ul class="pcoded-submenu">
                         <li><a href="information">Tentang Kami</a></li>
                         <li><a href="teacher">Dosen</a></li>
                         @if (Auth::user()->role == "administrator")
-                           <li><a href="/student">Mahasiswa/i</a></li>
+                           <li class="nav-item {{ Request::is('student*') ? 'active' : '' }}"><a href="/student">Mahasiswa/i</a></li>
                         @endif
                     </ul>
                 </li>
