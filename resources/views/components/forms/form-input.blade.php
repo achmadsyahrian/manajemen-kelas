@@ -14,16 +14,16 @@
             <i class="fas fa-address-card"></i>
             @break
         @case('password')
-        @case('verifPassword')
+        @case('confirm_password')
             <i class="fas fa-lock"></i>
             @break
         @case('phone')
             <i class="fas fa-phone"></i>
             @break
-        @case('oldPassword')
+        @case('old_password')
             <i class="fas fa-key"></i>
             @break
-        @case('newPassword')
+        @case('new_password')
             <i class="fas fa-unlock"></i>
             @break
     @endswitch

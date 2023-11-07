@@ -17,14 +17,11 @@ Route::middleware(['guest'])->group(function () {
 
 // Rute yang memerlukan otentikasi pengguna
 Route::middleware(['auth'])->group(function () {;
-    Route::get('/',  DashboardController::class);
+    Route::get('/',  DashboardController::class)->name('home');
     Route::post('/sign-out', [AuthController::class, 'signout'])->name('sign-out');
 
     // User
-    Route::resource('/user', UserController::class)->names([
-        'index' => 'user',
-        'show' => 'user',
-    ]);
+    Route::resource('/user', UserController::class);
     Route::patch('/user/activated/{user:id}', [UserController::class, 'activated'])->name('user.activated');
     Route::patch('/user/disable/{user:id}', [UserController::class, 'disable'])->name('user.disable');
 
@@ -34,4 +31,5 @@ Route::middleware(['auth'])->group(function () {;
 
     // Change Password
     Route::get('/profile/change-password', [PasswordController::class, 'edit']);
+    Route::patch('/profile/change-password/{user:id}', [PasswordController::class, 'update']);
 });

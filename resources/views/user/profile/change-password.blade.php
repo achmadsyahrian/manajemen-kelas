@@ -1,5 +1,8 @@
 @extends('layouts.main')
 @section('content')
+@if (session()->has('error')) 
+   <x-sweetalert type="error" head="Error!" body="{{ session('error') }}" ></x-sweetalert>
+@endif
    <div class="row">
       <div class="col-md-12">
          <div class="card py-4">
@@ -25,13 +28,13 @@
                      @method('PATCH')
                      <div class="row mt-4">
                         <div class="col-sm-12">
-                           <x-forms.form-input type="password" label="Old Password" name="oldPassword" value=""></x-forms.form-input>
+                           <x-forms.form-input type="password" label="Old Password" name="old_password" value=""></x-forms.form-input>
                         </div>
                         <div class="col-sm-6">
-                           <x-forms.form-input type="password" label="New Password" name="newPassword" value=""></x-forms.form-input>
+                           <x-forms.form-input type="password" label="New Password" name="new_password" value=""></x-forms.form-input>
                         </div>
                         <div class="col-sm-6">
-                           <x-forms.form-input type="password" label="Verification Password" name="verifPassword" value=""></x-forms.form-input>
+                           <x-forms.form-input type="password" label="Confirm Password" name="confirm_password" value=""></x-forms.form-input>
                         </div>
                      </div>
                      <div class="row justify-content-around mt-4">
