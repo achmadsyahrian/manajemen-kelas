@@ -52,7 +52,7 @@
                         <li><a href="information">Tentang Kami</a></li>
                         <li><a href="teacher">Dosen</a></li>
                         @if (Auth::user()->role == "administrator")
-                           <li><a href="student">Mahasiswa/i</a></li>
+                           <li><a href="/student">Mahasiswa/i</a></li>
                         @endif
                     </ul>
                 </li>

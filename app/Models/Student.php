@@ -14,6 +14,6 @@ class Student extends Model
     // Relasi User
     public function User()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

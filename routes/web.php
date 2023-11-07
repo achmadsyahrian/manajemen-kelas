@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,4 +34,7 @@ Route::middleware(['auth'])->group(function () {;
     // Change Password
     Route::get('/profile/change-password', [PasswordController::class, 'edit']);
     Route::patch('/profile/change-password/{user:id}', [PasswordController::class, 'update']);
+
+    // Student
+    Route::resource('/student', StudentController::class);
 });
