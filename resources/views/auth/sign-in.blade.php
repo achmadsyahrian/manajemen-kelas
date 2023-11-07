@@ -36,8 +36,8 @@
                      @elseif(session()->has('regisSuccess'))
                         <x-sweetalert type="success" head="Akun Berhasil Didaftarkan!" body="{{ session('regisSuccess') }}" ></x-sweetalert>
                      @endif
-                     <x-forms.form-input label="Username" name="username" value="{{ old('username') }}"></x-forms.form-input>
-                     <x-forms.form-input label="Password" name="password" value="{{ old('password') }}"></x-forms.form-input>
+                     <x-forms.form-input type="username" label="Username" name="username" value="{{ old('username') }}"></x-forms.form-input>
+                     <x-forms.form-input type="password" label="Password" name="password" value="{{ old('password') }}"></x-forms.form-input>
                      <button class="btn btn-block btn-primary mb-4">Sign In</button>
                   </form>
 						<p class="mb-0 text-muted">Don't have an account? <a href="sign-up" class="f-w-400">Sign Up</a></p>

@@ -26,10 +26,10 @@
 						<form action="/sign-up" method="POST">
 							@csrf
 							<h4 class="mb-3 f-w-800">SIGN UP</h4>
-                     <x-forms.form-input label="Name" name="name" value="{{ old('name') }}"></x-forms.form-input>
-                     <x-forms.form-input label="Username" name="username" value="{{ old('username') }}"></x-forms.form-input>
-                     <x-forms.form-input label="Email" name="email" value="{{ old('email') }}"></x-forms.form-input>
-                     <x-forms.form-input label="Password" name="password" value="{{ old('password') }}"></x-forms.form-input>
+                     <x-forms.form-input type="text" label="Name" name="name" value="{{ old('name') }}"></x-forms.form-input>
+                     <x-forms.form-input type="username" label="Username" name="username" value="{{ old('username') }}"></x-forms.form-input>
+                     <x-forms.form-input type="text" label="Email" name="email" value="{{ old('email') }}"></x-forms.form-input>
+                     <x-forms.form-input type="password" label="Password" name="password" value="{{ old('password') }}"></x-forms.form-input>
 							<button type="submit" class="btn btn-block btn-primary mb-4">Sign Up</button>
 						</form>
 						<p class="mb-2">Already have an account? <a href="sign-in" class="f-w-400">Sign In</a></p>

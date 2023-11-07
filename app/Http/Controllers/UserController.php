@@ -81,7 +81,7 @@ class UserController extends Controller
     public function profile()
     {
         $user = Auth::user();
-        return view('user.profile', [
+        return view('user.profile.profile', [
             'user' => $user,
             'userProfilePhoto' => $this->userProfilePhoto
         ]);
@@ -163,7 +163,6 @@ class UserController extends Controller
         $user->update(['status' => 'active']);  
         return redirect('/user')->with('success', 'User Berhasil Diaktivasi!');
     }
-
     public function disable(User $user) 
     {
         $user->update(['status' => 'disabled']);  

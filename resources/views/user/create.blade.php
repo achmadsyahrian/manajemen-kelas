@@ -18,13 +18,13 @@
                      </div>
                      <div class="row mt-4">
                         <div class="col-sm-6">
-                           <x-forms.form-input label="Name" name="name" value="{{ old('name') }}"></x-forms.form-input>
+                           <x-forms.form-input type="text" label="Name" name="name" value="{{ old('name') }}"></x-forms.form-input>
                         </div>
                         <div class="col-sm-6">
-                           <x-forms.form-input label="Username" name="username" value="{{ old('username') }}"></x-forms.form-input>
+                           <x-forms.form-input type="username" label="Username" name="username" value="{{ old('username') }}"></x-forms.form-input>
                         </div>
                         <div class="col-sm-12">
-                           <x-forms.form-input label="Email" name="email" value="{{ old('email') }}"></x-forms.form-input>
+                           <x-forms.form-input type="text" label="Email" name="email" value="{{ old('email') }}"></x-forms.form-input>
                         </div>
                      </div>
                      <div class="row justify-content-around mt-4">

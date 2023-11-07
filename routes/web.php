@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +31,7 @@ Route::middleware(['auth'])->group(function () {;
     // Profile
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
     Route::put('/profile/{user:id}', [UserController::class, 'updateProfile']);
+
+    // Change Password
+    Route::get('/profile/change-password', [PasswordController::class, 'edit']);
 });

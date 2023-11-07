@@ -32,8 +32,7 @@
          <div class="col-sm-12">
             <a href="user/create">
                <button type="button" class="btn btn-primary btn-block">
-                  Add User<i class="fas fa-plus-circle mr-2"></i>
-                  {{-- <i class="feather mr-2 icon-thumbs-up"></i> --}}
+                  Add User <i class="fas fa-plus-circle mr-2"></i>
                </button>
             </a>
          </div>

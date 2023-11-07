@@ -1,21 +1,35 @@
 <div class="form-group mb-4">
     <label class="floating-label" for="{{ $name }}">
-        @if ($name == 'name')
+    @switch($name)
+        @case('name')
             <i class="fas fa-user"></i>
-        @elseif ($name == 'username')
+            @break
+        @case('username')
             <i class="fas fa-at"></i>
-        @elseif ($name == 'email')
+            @break
+        @case('email')
             <i class="fas fa-envelope"></i>
-        @elseif ($name == 'nim')
+            @break
+        @case('nim')
             <i class="fas fa-address-card"></i>
-        @elseif ($name == 'password')
+            @break
+        @case('password')
+        @case('verifPassword')
             <i class="fas fa-lock"></i>
-        @elseif ($name == 'phone')
+            @break
+        @case('phone')
             <i class="fas fa-phone"></i>
-        @endif
-        {{ $label }}
+            @break
+        @case('oldPassword')
+            <i class="fas fa-key"></i>
+            @break
+        @case('newPassword')
+            <i class="fas fa-unlock"></i>
+            @break
+    @endswitch
+    {{ $label }}
     </label>
-    <input type="text" class="form-control @error($name) is-invalid @enderror" value="{{ old($name, $value) }}" id="{{ $name }}" name="{{ $name }}" autocomplete="off">
+<input type="{{ $type }}" class="form-control @error($name) is-invalid @enderror" value="{{ old($name, $value) }}" id="{{ $name }}" name="{{ $name }}" autocomplete="off">
     @error($name)
         <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
     @enderror

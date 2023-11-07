@@ -35,17 +35,17 @@
                   </div>
                   <div class="row mt-4">
                      <div class="col-sm-6">
-                        <x-forms.form-input label="Name" name="name" value="{{ old('name', $user->name) }}"></x-forms.form-input>
+                        <x-forms.form-input type="text" label="Name" name="name" value="{{ old('name', $user->name) }}"></x-forms.form-input>
                      </div>
                      <div class="col-sm-6">
-                        <x-forms.form-input label="Username" name="username" value="{{ old('username', $user->username) }}"></x-forms.form-input>
+                        <x-forms.form-input type="username" label="Username" name="username" value="{{ old('username', $user->username) }}"></x-forms.form-input>
                      </div>
                      @if ($user->role == 'mahasiswa')
                         <div class="col-sm-6">
-                           <x-forms.form-input label="NIM" name="nim" value="{{ old('nim', $user->student->nim) }}"></x-forms.form-input>
+                           <x-forms.form-input type="text" label="NIM" name="nim" value="{{ old('nim', $user->student->nim) }}"></x-forms.form-input>
                         </div>
                         <div class="col-md-6">
-                           <x-forms.form-input label="Phone" name="phone" value="{{ old('phone', $user->student->phone) }}"></x-forms.form-input>
+                           <x-forms.form-input type="text" label="Phone" name="phone" value="{{ old('phone', $user->student->phone) }}"></x-forms.form-input>
                         </div>
                         <div class="col-md-6">
                            <div class="form-group mb-4">
@@ -57,7 +57,7 @@
                         </div>
                         @endif
                      <div class="col-sm-{{ $user->role == "mahasiswa" ? '6' : '12' }}">
-                        <x-forms.form-input label="Email" name="email" value="{{ old('email', $user->email) }}"></x-forms.form-input>
+                        <x-forms.form-input type="text" label="Email" name="email" value="{{ old('email', $user->email) }}"></x-forms.form-input>
                      </div>
                   </div>
                   <div class="row justify-content-around mt-4">
