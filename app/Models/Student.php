@@ -16,4 +16,16 @@ class Student extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($student) {
+            // Melakukan penghapusan kaskade pada entitas User jika student dihapus
+            if ($student->user) {
+                $student->user->forceDelete();
+            }            
+        });
+    }
 }
