@@ -30,7 +30,8 @@ class ProfileController extends Controller
     public function update(User $user, Request $request, UserController $userController) //cara memakai fungsi controller lain
     {
         $userController->validateUserData($request, $user);
-        $userController->validateStudentData($request, $user);
+        $student = $user->student;
+        $userController->validateStudentData($request, $student);
 
         return redirect('/')->with('success', 'Data Berhasil Disimpan!');
     }

@@ -83,7 +83,7 @@
                               <td>{{ Str::ucfirst($student->gender) }}</td>
                               <td>{{ $student->phone ? $student->phone : 'Belum Diisi' }}</td>
                               <td class="text-right">
-                                 <x-buttons.button-edit-icon id="{{ $student->id }}"></x-buttons.button-edit-icon>
+                                 <x-buttons.button-edit-icon id="/student/{{ $student->id }}/edit"></x-buttons.button-edit-icon>
                               </td>
                            </tr>
                         @endforeach

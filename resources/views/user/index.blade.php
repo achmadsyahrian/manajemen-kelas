@@ -101,7 +101,7 @@
                                  @endif
                               </td>
                               <td class="text-right">
-                                 <x-buttons.button-edit-icon id="{{ $user->id }}"></x-buttons.button-edit-icon>
+                                 <x-buttons.button-edit-icon id="/user/{{ $user->id }}"></x-buttons.button-edit-icon>
                               </td>
                            </tr>
                         @endforeach

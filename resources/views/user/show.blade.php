@@ -86,7 +86,7 @@
                      <div class="row justify-content-around mt-4">
                         <x-buttons.button-save></x-buttons.button-save>
                         </form> {{-- form save --}}
-                        <x-forms.form-user-delete id="{{ $user->id }}"></x-forms.form-user-delete>
+                        <x-forms.form-user-delete id="/user/{{ $user->id }}"></x-forms.form-user-delete>
                      </div>
                   @endif
                </div>

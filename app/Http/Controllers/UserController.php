@@ -116,10 +116,8 @@ class UserController extends Controller
         $user->update($validatedUser);
     }
 
-    public function validateStudentData($request, $user)
+    public function validateStudentData($request, $student)
     {
-        $student = $user->student;
-
         if ($student) {
             $validatedStudent = $request->validate([
                 'nim' => 'required|size:10|regex:/^[0-9]{10}$/|unique:students,nim,' . $student->id,

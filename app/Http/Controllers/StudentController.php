@@ -88,15 +88,21 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        return view('student.edit', [
+            'student' => $student,
+            'userProfilePhoto' => $this->userProfilePhoto
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Student $student)
-    {
-        //
+    public function update(Request $request, Student $student,  UserController $userController)
+    {   
+        $user = $student->user;
+        $userController->validateUserData($request, $user);
+        $userController->validateStudentData($request, $student);
+        return redirect('/student')->with('success', 'Data Berhasil Disimpan!');
     }
 
     /**
