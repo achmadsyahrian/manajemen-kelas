@@ -58,8 +58,8 @@
                            <tr>
                               <th>#</th>
                               <th>Profile</th>
-                              <th>Gender</th>
-                              <th>Phone</th>
+                              <th class="text-center">Gender</th>
+                              <th class="text-center">Phone</th>
                               @if (Auth::user()->role == "administrator" || Auth::user()->role == "komisaris")
                                  <th class="text-right">Action</th>
                               @endif
@@ -68,7 +68,7 @@
                         <tbody>
                         @foreach ($students as $student)    
                            <tr>
-                              <td>{{ $loop->iteration + ($students->perPage() * ($students->currentPage() - 1)) }}</td>
+                              <td class="align-middle">{{ $loop->iteration + ($students->perPage() * ($students->currentPage() - 1)) }}</td>
                               <td>
                                  <div class="d-inline-block align-middle">
                                        @if (!$student->photo)
@@ -82,11 +82,23 @@
                                        </div>
                                  </div>
                               </td>
-                              <td>{{ Str::ucfirst($student->gender) }}</td>
-                              <td>{{ $student->phone ? $student->phone : 'Belum Diisi' }}</td>
+                              <td class="text-center align-middle">{{ Str::ucfirst($student->gender) }}</td>
+                              <td class="text-center align-middle">{{ $student->phone ? $student->phone : 'Belum Diisi' }}</td>
                               @if (Auth::user()->role == "administrator" || Auth::user()->role == "komisaris")
-                                 <td class="text-right">
-                                    <x-buttons.button-edit-icon id="/student/{{ $student->id }}/edit"></x-buttons.button-edit-icon>
+                                 <td class="text-right align-middle">
+                                    <a href="/student/{{ $student->id }}" class="btn btn-icon btn-outline-info" style="width:30px; height:30px;" >
+                                       <i class="fas fa-eye" style="font-size: 14px;" ></i>
+                                    </a>
+                                    <a href="/student/{{ $student->id }}/edit" class="btn btn-icon btn-outline-primary" style="width:30px; height:30px;" >
+                                       <i class="fa-solid fa-gear" style="font-size: 14px;" ></i>
+                                    </a>
+                                    <form action="/student/{{ $student->id }}" method="POST" id="delete-student" class="d-inline">
+                                       @csrf
+                                       @method('DELETE')
+                                       <button type="button" onclick="showDeleteConfirmation('Ya, Hapus', 'Apakah Anda yakin ingin menghapus data ini?', 'delete-student')" class="btn btn-icon btn-outline-danger" style="width:30px; height:30px;" >
+                                          <i class="fas fa-trash-alt" style="font-size: 14px;" ></i>
+                                       </button>
+                                   </form>
                                  </td>
                               @endif
                            </tr>

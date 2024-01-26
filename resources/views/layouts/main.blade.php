@@ -2,19 +2,21 @@
 <html lang="en">
 
 <head>
-    <title>Informatika Malam A</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- Favicon icon -->
-    <link rel="icon" href="{{ asset("images/profile/logo-univ.png") }}" type="image/x-icon">
+   <title>Informatika Malam A</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <!-- Favicon icon -->
+   <link rel="icon" href="{{ asset("images/profile/logo-univ.png") }}" type="image/x-icon">
 
-    <!-- vendor css -->
-    <link rel="stylesheet" href="{{ asset("css/style.css") }}">
-    
+   <!-- vendor css -->
+   <link rel="stylesheet" href="{{ asset("css/style.css") }}">
+   
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
    {{-- Sweet Alert --}}
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
 </head>
 <body class="">
    {{-- Loader --}}

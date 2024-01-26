@@ -35,7 +35,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.create', [
+        return view('student.form', [
+            'title' => 'MAHASISWA',
             'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }
@@ -70,7 +71,11 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        // dd($student);
+        return view('student.view', [
+            'student' => $student,
+            'userProfilePhoto' => $this->userProfilePhoto
+        ]);
     }
 
     /**
@@ -78,8 +83,9 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        return view('student.edit', [
+        return view('student.form', [
             'student' => $student,
+            'title' => 'EDIT MAHASISWA',
             'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }

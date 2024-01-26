@@ -343,6 +343,10 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
     display: block;
 }
 
+* {
+    font-family: 'Poppins';
+}
+
 body {
     margin: 0;
     font-family: "Open Sans", sans-serif;
@@ -22592,7 +22596,7 @@ pre[class*=language-]:before {
     height: 100%;
     width: 1px;
     top: 0;
-    left: 110px;
+    left: 0px;
     z-index: 1;
 }
 

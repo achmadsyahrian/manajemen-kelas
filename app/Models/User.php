@@ -40,7 +40,7 @@ class User extends Authenticatable
     ];
 
     // Relasi Student
-    public function student()
+    public function Student()
     {
         return $this->hasOne(Student::class, 'user_id');
     }

@@ -29,7 +29,7 @@
     @endswitch
     {{ $label }}
     </label>
-<input type="{{ $type }}" class="form-control @error($name) is-invalid @enderror" value="{{ old($name, $value) }}" id="{{ $name }}" name="{{ $name }}" autocomplete="off">
+<input type="{{ $type }}"  class="form-control @error($name) is-invalid @enderror" value="{{ old($name, $value) }}" id="{{ $name }}" name="{{ $name }}" autocomplete="off">
     @error($name)
         <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
     @enderror
