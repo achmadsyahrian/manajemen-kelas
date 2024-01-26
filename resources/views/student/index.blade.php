@@ -13,7 +13,7 @@
                <div class="card-body">
                   <div class="row align-items-center">
                      <div class="col-8">
-                        <h5 class="text-c-blue">Fandi Arifansyah</h5>
+                        <h5 class="text-c-blue">Muhammad Yusuf</h5>
                         <h6 class="text-muted m-b-0">Jabatan : <span class="text-c-blue">Ketua Komisaris</span></h6>
                      </div>
                      <div class="col-4 text-right">

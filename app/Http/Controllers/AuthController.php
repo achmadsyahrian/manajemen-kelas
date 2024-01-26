@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegistrationRequest;
 use App\Models\Student;
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -24,9 +26,9 @@ class AuthController extends Controller
             $namaLengkap = explode(' ', $user->name);
             $firstName = $namaLengkap[0]; // Kata pertama
             $request->session()->regenerate();
-            return redirect()->intended('/')->with('success','Selamat Datang '.$firstName);
+            return redirect(RouteServiceProvider::HOME)->with('success','Selamat Datang '.$firstName);
         }
-        return back()->with('error', 'Login Gagal!');
+        return back()->with('error', 'Akun Tidak Terdaftar!');
     }
     
     public function signout(Request $request) {
@@ -40,22 +42,14 @@ class AuthController extends Controller
         return view('auth.sign-up');
     }
 
-    public function store(Request $request) {
-        // User
-        $validated = $request->validate([
-            'name' => 'required|max:255',
-            'username' => 'required|min:5|unique:users|starts_with:@',
-            'password' => 'required|min:8|max:255',
-            'email' => 'nullable|email:dns|unique:users'
-        ]);
-        
-        // Enkripsi
-        $validated['password'] = Hash::make($validated['password']);
-        // Status
-        $validated['status'] = "waiting";
-        $validated['role'] = "user";
-        User::create($validated);
+    public function store(RegistrationRequest $request) {
+        // validasi
+        $data = $request->all();
+        $data['password'] = Hash::make($data['password']);
+        $data['status'] = "waiting";
+        $data['role'] = "user";
 
+        User::create($data);
         return redirect('/sign-in')->with('regisSuccess', 'Akan segera dikonfirmasi oleh Admin');
     }
     

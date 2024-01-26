@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -41,35 +43,23 @@ class StudentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $requestUser, StudentRequest $requestStudent)
     {
-        // validasi User
-        $validatedUser = $request->validate([
-            'name' => 'required|max:255',
-            'username' => 'required|min:5|starts_with:@|unique:users',
-            'email' => 'nullable|email:dns|unique:users',
-        ]);
-        // password
-        $validatedUser['password'] = Hash::make('12345678');
-        $validatedUser['role'] = 'mahasiswa';
-        $validatedUser['status'] = 'active';
+        $dataUser = $requestUser->all();
+        $dataStudent = $requestStudent->all();
+        $dataUser['password'] = Hash::make('12345678');
+        $dataUser['role'] = 'mahasiswa';
+        $dataUser['status'] = 'active';
 
-        // Validasi Mahasiswa
-        $validatedStudent = $request->validate([
-            'nim' => 'required|size:10|regex:/^[0-9]{10}$/|unique:students',
-            'gender' => 'nullable',
-            'phone' => 'nullable|regex:/^[0-9]{11,}$/|unique:students',
-            'photo' => 'image|file|max:5000', //5mb max
-        ]);
         // Validasi Photo
-        if ($request->hasFile('photo')) {
-            $photo = $request->file('photo')->store('student-images', 'public');
-            $validatedStudent['photo'] = $photo;
+        if ($requestStudent->hasFile('photo')) {
+            $photo = $requestStudent->file('photo')->store('student-images', 'public');
+            $dataStudent['photo'] = $photo;
         }
         
-        $user = User::create($validatedUser);
-        $validatedStudent['user_id'] = $user->id;
-        Student::create($validatedStudent);
+        $user = User::create($dataUser);
+        $dataStudent['user_id'] = $user->id;
+        Student::create($dataStudent);
 
         
         return redirect('/student')->with('success', 'Mahasiswa Berhasil Ditambahkan!');

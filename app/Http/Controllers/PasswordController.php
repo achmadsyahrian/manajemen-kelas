@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordRequest;
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -28,14 +30,8 @@ class PasswordController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(ChangePasswordRequest $request)
     {
-        $request->validate([
-            'old_password' => 'required',
-            'new_password' => 'required|min:8',
-            'confirm_password' => 'required|same:new_password',
-        ]);
-
         // Dapatkan user yang sedang login
         $user = Auth::user();
 
@@ -45,7 +41,7 @@ class PasswordController extends Controller
             $user->password = Hash::make($request->new_password);
             $user->save;
 
-            return redirect()->route('home')->with('success', 'Password Berhasil Diperbarui!');
+            return redirect(RouteServiceProvider::HOME)->with('success', 'Password Berhasil Diperbarui!');
         } else {
             // Jika password lama salah, kembalikan dengan pesan kesalahan
             return back()->with('error', 'Password Lama Salah. Silakan Coba Lagi!');

@@ -40,7 +40,7 @@ class User extends Authenticatable
     ];
 
     // Relasi Student
-    public function Student()
+    public function student()
     {
         return $this->hasOne(Student::class, 'user_id');
     }
@@ -48,11 +48,11 @@ class User extends Authenticatable
     {
         parent::boot();
 
-        static::deleting(function ($user) {
-            // Melakukan penghapusan kaskade pada entitas Student jika user dihapus
-            if ($user->student) {
-                $user->student->delete();
-            }
-        });
+        // static::deleting(function ($user) {
+        //     // Melakukan penghapusan kaskade pada entitas Student jika user dihapus
+        //     if ($user->student) {
+        //         $user->student->delete();
+        //     }
+        // });
     }
 }

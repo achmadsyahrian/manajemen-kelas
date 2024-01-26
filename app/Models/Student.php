@@ -12,9 +12,9 @@ class Student extends Model
     protected $guarded = ['id'];
 
     // Relasi User
-    public function User()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     protected static function boot()
