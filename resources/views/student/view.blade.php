@@ -40,7 +40,7 @@
                   <div class="col-sm-6">
                      <div class="form-group mb-4">
                         <label class="floating-label" for="name"><i class="fas fa-user"></i> Phone</label>
-                        <input type="text" class="form-control bg-transparent" value="{{ $student->phone }}" id="name" readonly>
+                        <input type="text" class="form-control bg-transparent" value="{{ $student->phone ?? 'Belum Diisi' }}" id="name" readonly>
                      </div>
                   </div>
                </div>

@@ -62,16 +62,16 @@
                            <tr>
                               <th>#</th>
                               <th>Profile</th>
-                              <th>Role</th>
-                              <th>Created</th>
-                              <th>Status</th>
+                              <th class="text-center">Role</th>
+                              <th class="text-center">Created</th>
+                              <th class="text-center">Status</th>
                               <th class="text-right">Action</th>
                            </tr>
                         </thead>
                         <tbody>
                         @foreach ($users as $user)    
                            <tr>
-                              <td>{{ $loop->iteration + ($users->perPage() * ($users->currentPage() - 1)) }}</td>
+                              <td class="align-middle">{{ $loop->iteration + ($users->perPage() * ($users->currentPage() - 1)) }}</td>
                               <td>
                                  <div class="d-inline-block align-middle">
                                        @if ($user->role == 'mahasiswa' && !empty($user->student->photo)) 
@@ -89,9 +89,9 @@
                                        </div>
                                  </div>
                               </td>
-                              <td>{{ Str::ucfirst($user->role) }}</td>
-                              <td>{{  $user->created_at->diffForHumans() }}</td>
-                              <td>
+                              <td class="text-center align-middle">{{ Str::ucfirst($user->role) }}</td>
+                              <td class="text-center align-middle">{{  $user->created_at->diffForHumans() }}</td>
+                              <td class="text-center align-middle">
                                  @if ($user->status == "active")
                                     <x-badge type="success">{{ Str::ucfirst($user->status) }}</x-badge>
                                  @elseif($user->status == "waiting")
@@ -100,9 +100,18 @@
                                     <x-badge type="danger">{{ Str::ucfirst($user->status) }}</x-badge>
                                  @endif
                               </td>
-                              <td class="text-right">
-                                 <x-buttons.button-edit-icon id="/user/{{ $user->id }}"></x-buttons.button-edit-icon>
-                              </td>
+                              <td class="text-right align-middle">
+                                    @if ($user->status == 'active')
+                                    <a href="/user/{{ $user->id }}" class="btn btn-icon btn-outline-info" style="width:30px; height:30px;" >
+                                       <i class="fas fa-eye" style="font-size: 14px;" ></i>
+                                    </a>
+                                    <a href="/user/{{ $user->id }}/edit" class="btn btn-icon btn-outline-primary" style="width:30px; height:30px;" >
+                                       <i class="fa-solid fa-gear" style="font-size: 14px;" ></i>
+                                    </a>
+                                    @elseif ($user->status == 'waiting')
+                                       <x-forms.form-status id="{{ $user->id }}"></x-forms.form-status>
+                                    @endif
+                                 </td>
                            </tr>
                         @endforeach
                         </tbody>

@@ -9,6 +9,9 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="">
 	<meta name="author" content="Phoenixcoded" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 	<!-- Favicon icon -->
 	<link rel="icon" href="{{ asset("images/profile/logo-univ.png") }}" type="image/x-icon">
 	<!-- vendor css -->

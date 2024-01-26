@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create', [
+        return view('user.form', [
             'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }
@@ -72,7 +73,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('user.show', [
+        return view('user.view', [
             'user' => $user,
             'userProfilePhoto' => $this->userProfilePhoto
         ]);
@@ -83,19 +84,20 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.form', [
+            'user' => $user,
+            'title' => 'EDIT USER',
+            'userProfilePhoto' => $this->userProfilePhoto
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(User $user,Student $student, Request $request)
+    public function update(User $user, UserRequest $request)
     {
-        $student = $user->student;
-
-        $this->validateUserData($request, $user);
-        $this->validateStudentData($request, $student);
-
+        $user = User::find($user->id);
+        $user->update($request->all());
         return redirect('/user')->with('success', 'User Berhasil Disimpan!');
     }
 

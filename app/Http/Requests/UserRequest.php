@@ -23,8 +23,9 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'username' => 'required|min:5|starts_with:@|unique:users',
-            'email' => 'nullable|email:dns|unique:users',
+            'username' => 'required|min:5|starts_with:@|unique:users,username,' . $this->user->id,
+            'email' => 'nullable|email:dns|unique:users,email,' . $this->user->id,
+            'password' => 'nullable|min:8|max:255|unique:users,password,' . $this->user->id,
         ];
     }
 }

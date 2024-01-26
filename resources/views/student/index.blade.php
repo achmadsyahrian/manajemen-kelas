@@ -92,13 +92,6 @@
                                     <a href="/student/{{ $student->id }}/edit" class="btn btn-icon btn-outline-primary" style="width:30px; height:30px;" >
                                        <i class="fa-solid fa-gear" style="font-size: 14px;" ></i>
                                     </a>
-                                    <form action="/student/{{ $student->id }}" method="POST" id="delete-student" class="d-inline">
-                                       @csrf
-                                       @method('DELETE')
-                                       <button type="button" onclick="showDeleteConfirmation('Ya, Hapus', 'Apakah Anda yakin ingin menghapus data ini?', 'delete-student')" class="btn btn-icon btn-outline-danger" style="width:30px; height:30px;" >
-                                          <i class="fas fa-trash-alt" style="font-size: 14px;" ></i>
-                                       </button>
-                                   </form>
                                  </td>
                               @endif
                            </tr>

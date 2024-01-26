@@ -24,7 +24,7 @@ class Student extends Model
         static::deleting(function ($student) {
             // Melakukan penghapusan kaskade pada entitas User jika student dihapus
             if ($student->user) {
-                $student->user->forceDelete();
+                $student->user->delete();
             }            
         });
     }
