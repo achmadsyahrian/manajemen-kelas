@@ -52,9 +52,7 @@
                     <ul class="pcoded-submenu">
                         <li><a href="information">Tentang Kami</a></li>
                         <li><a href="teacher">Dosen</a></li>
-                        @if (Auth::user()->role == "administrator")
-                           <li class="nav-item {{ Request::is('student*') ? 'active' : '' }}"><a href="/student">Mahasiswa/i</a></li>
-                        @endif
+                        <li class="nav-item {{ Request::is('student*') ? 'active' : '' }}"><a href="/student">Mahasiswa/i</a></li>
                     </ul>
                 </li>
             </li>

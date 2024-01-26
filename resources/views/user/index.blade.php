@@ -81,7 +81,7 @@
                                        @endif
                                        <div class="d-inline-block">
                                           <h6>{{ $user->name }}</h6>
-                                          @if ($user->role == "mahasiswa")
+                                          @if ($user->role === "mahasiswa")
                                              <p class="text-muted m-b-0">{{ $user->student->nim }}</p>
                                           @else
                                              <p class="text-muted m-b-0">{{ $user->email }}</p>

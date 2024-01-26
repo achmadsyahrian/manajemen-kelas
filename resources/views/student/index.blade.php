@@ -60,7 +60,9 @@
                               <th>Profile</th>
                               <th>Gender</th>
                               <th>Phone</th>
-                              <th class="text-right">Action</th>
+                              @if (Auth::user()->role == "administrator" || Auth::user()->role == "komisaris")
+                                 <th class="text-right">Action</th>
+                              @endif
                            </tr>
                         </thead>
                         <tbody>
@@ -82,9 +84,11 @@
                               </td>
                               <td>{{ Str::ucfirst($student->gender) }}</td>
                               <td>{{ $student->phone ? $student->phone : 'Belum Diisi' }}</td>
-                              <td class="text-right">
-                                 <x-buttons.button-edit-icon id="/student/{{ $student->id }}/edit"></x-buttons.button-edit-icon>
-                              </td>
+                              @if (Auth::user()->role == "administrator" || Auth::user()->role == "komisaris")
+                                 <td class="text-right">
+                                    <x-buttons.button-edit-icon id="/student/{{ $student->id }}/edit"></x-buttons.button-edit-icon>
+                                 </td>
+                              @endif
                            </tr>
                         @endforeach
                         </tbody>

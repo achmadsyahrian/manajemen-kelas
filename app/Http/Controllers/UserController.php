@@ -89,10 +89,12 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(User $user, Request $request)
+    public function update(User $user,Student $student, Request $request)
     {
+        $student = $user->student;
+
         $this->validateUserData($request, $user);
-        $this->validateStudentData($request, $user);
+        $this->validateStudentData($request, $student);
 
         return redirect('/user')->with('success', 'User Berhasil Disimpan!');
     }
