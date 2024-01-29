@@ -74,11 +74,11 @@
                               <td class="align-middle">{{ $loop->iteration + ($users->perPage() * ($users->currentPage() - 1)) }}</td>
                               <td>
                                  <div class="d-inline-block align-middle">
-                                       @if ($user->role == 'mahasiswa' && !empty($user->student->photo)) 
-                                          <x-images.image-round-profile photo="storage/{{ $user->student->photo }}"></x-images.image-round-profile>
-                                       @else
-                                          <x-images.image-round-profile photo="images/user/default-user-2.png"></x-images.image-round-profile>
-                                       @endif
+                                    @if ($user->role == 'mahasiswa' && !empty($user->student->photo))
+                                       <x-ImageCell :photo="$user->student->photo" :width=40 :height=40 />
+                                    @else
+                                       <x-ImageCell :photo="'images/user/default-user-2.png'" :width=40 :height=40 />
+                                    @endif
                                        <div class="d-inline-block">
                                           <h6>{{ $user->name }}</h6>
                                           @if ($user->role === "mahasiswa")

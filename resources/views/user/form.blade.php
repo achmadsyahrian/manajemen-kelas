@@ -6,9 +6,9 @@
          <div class="row justify-content-evenly">
             <div class="col-sm-4">
                @if (!empty($user->student->photo))
-               <x-images.image-profile photo="storage/{{ $user->student->photo }}"></x-images.image-profile>
+                  <x-images.image-profile :photo="'storage/'.$user->student->photo"></x-images.image-profile>
                @else
-               <x-images.image-profile photo="images/user/default-user-2.png"></x-images.image-profile>
+                  <x-images.image-profile :photo="'images/user/default-user-2.png'"></x-images.image-profile>
                @endif
             </div>
             <div class="col-sm-7 m-4">

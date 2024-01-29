@@ -6,15 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ImageRoundProfile extends Component
+class ImageCell extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $photo;
-    public function __construct($photo)
+    public function __construct()
     {
-        $this->photo = $photo;
+        //
     }
 
     /**
@@ -22,6 +21,6 @@ class ImageRoundProfile extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.images.image-round-profile');
+        return view('components.image-cell');
     }
 }

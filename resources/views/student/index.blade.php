@@ -72,9 +72,9 @@
                               <td>
                                  <div class="d-inline-block align-middle">
                                        @if (!$student->photo)
-                                          <x-images.image-round-profile photo="images/user/default-user-2.png"></x-images.image-round-profile>
+                                          <x-ImageCell :photo="'images/user/default-user-2.png'" :width=40 :height=40 />
                                        @else
-                                          <x-images.image-round-profile   ges.image-round-profile photo="storage/{{ $student->photo }}"></x-images.image-round-profile>
+                                          <x-ImageCell :photo="'storage/'. $student->photo" :width=40 :height=40 />
                                        @endif
                                        <div class="d-inline-block">
                                           <h6>{{ $student->user->name }}</h6>

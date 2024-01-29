@@ -9,14 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    protected $userProfilePhoto;
 
     public function __construct()
     {
-        $this->middleware(function ($request, $next) {
-            $this->userProfilePhoto = $this->getUserProfilePhoto(Auth::user());
-            return $next($request);
-        });
+        //
     }
 
     public function edit()
@@ -24,7 +20,6 @@ class ProfileController extends Controller
         $user = Auth::user();
         return view('user.profile.profile', [
             'user' => $user,
-            'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }
 

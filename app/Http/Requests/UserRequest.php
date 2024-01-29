@@ -21,11 +21,20 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'name' => 'required|max:255',
-            'username' => 'required|min:5|starts_with:@|unique:users,username,' . $this->user->id,
-            'email' => 'nullable|email:dns|unique:users,email,' . $this->user->id,
-            'password' => 'nullable|min:8|max:255|unique:users,password,' . $this->user->id,
+            'username' => 'required|min:5|starts_with:@|unique:users,username',
+            'email' => 'nullable|email:dns|unique:users,email',
+            'password' => 'nullable|min:8|max:255',
         ];
+
+        // Jika ada objek user (update), tambahkan aturan unik dengan mengabaikan ID yang sedang diupdate
+        if ($this->user) {
+            $rules['username'] .= ',' . $this->user->id;
+            $rules['email'] .= ',' . $this->user->id;
+            $rules['password'] .= ',' . $this->user->id;
+        }
+
+        return $rules;
     }
 }

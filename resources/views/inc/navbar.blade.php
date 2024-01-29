@@ -3,16 +3,7 @@
       <div class="navbar-content scroll-div " >
          <div class="">
             <div class="main-menu-header">
-               {{-- if ($user->role == 'mahasiswa' && !empty($user->student->photo)) {
-                  return 'storage/' . $user->student->photo;
-              } elseif ($user->role == 'administrator') {
-                  return 'images/user/administrator.jpg';
-              } else {
-                  return 'images/user/default-user-2.png';
-              } --}}
-              @if (Auth::user()->role == 'mahasiswa' && !empty(Auth::user()->student->photo))   
-               <x-images.image-user-profile photo="storage/{{ Auth::user()->student->photo }}" width="60px" height="60px"></x-images.image-user-profile>
-              @endif
+               <x-UserAvatar :photo="Auth::user()->role == 'mahasiswa' ? 'storage/'.Auth::user()->student->photo : null" :width=60 :height=60 />
                <div class="user-details">
                   <div id="more-details"> 
                      @if (Auth::user()->role == "mahasiswa")

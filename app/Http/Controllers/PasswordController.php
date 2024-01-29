@@ -11,14 +11,10 @@ use Illuminate\Support\Facades\Hash;
 
 class PasswordController extends Controller
 {
-    protected $userProfilePhoto;
 
     public function __construct()
     {
-        $this->middleware(function ($request, $next) {
-            $this->userProfilePhoto = $this->getUserProfilePhoto(Auth::user());
-            return $next($request);
-        });
+        //
     }
 
     public function edit(User $user)
@@ -26,7 +22,6 @@ class PasswordController extends Controller
         $user = Auth::user();
         return view('user.profile.change-password', [
             'user' => $user,
-            'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }
 

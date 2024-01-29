@@ -9,7 +9,6 @@ class DashboardController extends Controller
 {
     public function __invoke() 
     {
-        $userProfilePhoto = $this->getUserProfilePhoto(Auth::user());
-        return view('index', compact('userProfilePhoto'));
+        return view('index');
     }
 }

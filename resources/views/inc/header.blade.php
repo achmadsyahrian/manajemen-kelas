@@ -19,7 +19,7 @@
                </a>
                <div class="dropdown-menu dropdown-menu-right profile-notification">
                   <div class="pro-head">
-                     <x-images.image-user-profile photo="{{ $userProfilePhoto }}" width="40px" height="40px"></x-images.image-user-profile>
+                     <x-UserAvatar :photo="Auth::user()->role == 'mahasiswa' ? 'storage/'.Auth::user()->student->photo : null" :width=40 :height=40 />
                      <span>{{ Str::limit(Auth::user()->name, 15, '...') }}</span>
                   </div>
                   <ul class="pro-body">

@@ -12,21 +12,16 @@ use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
-    protected $userProfilePhoto;
 
     public function __construct()
     {
-        $this->middleware(function ($request, $next) {
-            $this->userProfilePhoto = $this->getUserProfilePhoto(Auth::user());
-            return $next($request);
-        });
+        //
     }
     
     public function index()
     {
         return view('student.index', [
             'students' => Student::orderBy('nim')->paginate(10),
-            'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }
 
@@ -37,7 +32,6 @@ class StudentController extends Controller
     {
         return view('student.form', [
             'title' => 'MAHASISWA',
-            'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }
 
@@ -74,7 +68,6 @@ class StudentController extends Controller
         // dd($student);
         return view('student.view', [
             'student' => $student,
-            'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }
 
@@ -86,7 +79,6 @@ class StudentController extends Controller
         return view('student.form', [
             'student' => $student,
             'title' => 'EDIT MAHASISWA',
-            'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }
 

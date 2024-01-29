@@ -12,14 +12,9 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    protected $userProfilePhoto;
-
     public function __construct()
     {
-        $this->middleware(function ($request, $next) {
-            $this->userProfilePhoto = $this->getUserProfilePhoto(Auth::user());
-            return $next($request);
-        });
+        //
     }
 
 
@@ -33,7 +28,6 @@ class UserController extends Controller
             'users' => $users,
             'usersActive' => $usersActive,
             'usersWaiting' => $usersWaiting,
-            'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }
 
@@ -42,9 +36,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.form', [
-            'userProfilePhoto' => $this->userProfilePhoto
-        ]);
+        return view('user.form');
     }
 
     /**
@@ -74,8 +66,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         return view('user.view', [
-            'user' => $user,
-            'userProfilePhoto' => $this->userProfilePhoto
+            'user' => $user
         ]);
     }
 
@@ -87,7 +78,6 @@ class UserController extends Controller
         return view('user.form', [
             'user' => $user,
             'title' => 'EDIT USER',
-            'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }
 

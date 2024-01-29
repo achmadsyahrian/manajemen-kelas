@@ -6,11 +6,11 @@
          <div class="row justify-content-evenly">
             <div class="col-sm-4">
                @if ($user->role == 'mahasiswa' && !empty($user->student->photo))
-               <x-images.image-profile photo="storage/{{ $user->student->photo }}"></x-images.image-profile>
+                  <x-images.image-profile :photo="'storage/'.$user->student->photo"></x-images.image-profile>
                @elseif($user->role == 'administrator')
-               <x-images.image-profile photo="images/user/administrator.jpg"></x-images.image-profile>
+                  <x-images.image-profile :photo="'images/user/administrator.jpg'"></x-images.image-profile>
                @else
-               <x-images.image-profile photo="images/user/default-user-2.png"></x-images.image-profile>
+                  <x-images.image-profile :photo="'images/user/default-user-2.png'"></x-images.image-profile>
                @endif
                <form action="/profile/{{ $user->id }}" method="POST" id="form-save" enctype="multipart/form-data"> {{--
                   form save --}}
