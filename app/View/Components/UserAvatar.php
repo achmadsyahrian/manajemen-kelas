@@ -21,6 +21,6 @@ class UserAvatar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.user-avatar');
+        return view('components.images.user-avatar');
     }
 }

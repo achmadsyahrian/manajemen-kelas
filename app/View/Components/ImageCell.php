@@ -21,6 +21,6 @@ class ImageCell extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.image-cell');
+        return view('components.images.image-cell');
     }
 }

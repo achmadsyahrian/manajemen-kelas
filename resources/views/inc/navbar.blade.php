@@ -3,7 +3,7 @@
       <div class="navbar-content scroll-div " >
          <div class="">
             <div class="main-menu-header">
-               <x-UserAvatar :photo="Auth::user()->role == 'mahasiswa' ? 'storage/'.Auth::user()->student->photo : null" :width=60 :height=60 />
+               <x-images.user-avatar :photo="Auth::user()->role == 'mahasiswa' ? 'storage/'.Auth::user()->student->photo : null" :width=60 :height=60 />
                <div class="user-details">
                   <div id="more-details"> 
                      @if (Auth::user()->role == "mahasiswa")

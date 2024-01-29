@@ -72,9 +72,9 @@
                               <td>
                                  <div class="d-inline-block align-middle">
                                        @if (!$student->photo)
-                                          <x-ImageCell :photo="'images/user/default-user-2.png'" :width=40 :height=40 />
+                                          <x-images.image-cell :photo="'images/user/default-user-2.png'" :width=40 :height=40 />
                                        @else
-                                          <x-ImageCell :photo="'storage/'. $student->photo" :width=40 :height=40 />
+                                          <x-images.image-cell :photo="'storage/'. $student->photo" :width=40 :height=40 />
                                        @endif
                                        <div class="d-inline-block">
                                           <h6>{{ $student->user->name }}</h6>

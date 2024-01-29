@@ -75,9 +75,9 @@
                               <td>
                                  <div class="d-inline-block align-middle">
                                     @if ($user->role == 'mahasiswa' && !empty($user->student->photo))
-                                       <x-ImageCell :photo="$user->student->photo" :width=40 :height=40 />
+                                       <x-images.image-cell :photo="$user->student->photo" :width=40 :height=40 />
                                     @else
-                                       <x-ImageCell :photo="'images/user/default-user-2.png'" :width=40 :height=40 />
+                                       <x-images.image-cell :photo="'images/user/default-user-2.png'" :width=40 :height=40 />
                                     @endif
                                        <div class="d-inline-block">
                                           <h6>{{ $user->name }}</h6>
