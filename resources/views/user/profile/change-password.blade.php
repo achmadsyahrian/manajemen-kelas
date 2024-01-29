@@ -28,19 +28,45 @@
                      @method('PATCH')
                      <div class="row mt-4">
                         <div class="col-sm-12">
-                           <x-forms.form-input type="password" label="Old Password" name="old_password" value=""></x-forms.form-input>
+                           <div class="form-group mb-4">
+                              <label class="floating-label" for="old_password"><i class="fas fa-key"></i>
+                                 Old Password</label>
+                              <input type="password" class="form-control bg-transparent @error('old_password') is-invalid @enderror"
+                                 name="old_password" value="" id="old_password">
+                              @error('email')
+                              <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
+                              @enderror
+                           </div>
                         </div>
                         <div class="col-sm-6">
-                           <x-forms.form-input type="password" label="New Password" name="new_password" value=""></x-forms.form-input>
+                           <div class="form-group mb-4">
+                              <label class="floating-label" for="new_password"><i class="fas fa-unlock"></i>
+                                 New Password</label>
+                              <input type="password" class="form-control bg-transparent @error('new_password') is-invalid @enderror"
+                                 name="new_password" value="" id="new_password">
+                              @error('email')
+                              <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
+                              @enderror
+                           </div>
                         </div>
                         <div class="col-sm-6">
-                           <x-forms.form-input type="password" label="Confirm Password" name="confirm_password" value=""></x-forms.form-input>
+                           <div class="form-group mb-4">
+                              <label class="floating-label" for="confirm_password"><i class="fas fa-lock"></i>
+                                 Confirm Password</label>
+                              <input type="password" class="form-control bg-transparent @error('confirm_password') is-invalid @enderror"
+                                 name="confirm_password" value="" id="confirm_password">
+                              @error('email')
+                              <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
+                              @enderror
+                           </div>
                         </div>
                      </div>
                      <div class="row justify-content-around mt-4">
-                     <x-buttons.button-save></x-buttons.button-save>
-                  </form> {{-- form save --}}
+                        <button type="submit" class="btn btn-success">
+                           <i class="fas fa-save mr-2"></i>Save
+                        </button>
                      </div>
+                  </form> {{-- form save --}}
                </div>
             </div>
          </div>

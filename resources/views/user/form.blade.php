@@ -38,7 +38,7 @@
                      </div>
                      <div class="col-sm-6">
                         <div class="form-group mb-4">
-                           <label class="floating-label" for="username"><i class="fas fa-user"></i>
+                           <label class="floating-label" for="username"><i class="fas fa-at"></i>
                               Username</label>
                            <input type="username"
                               class="form-control bg-transparent @error('username') is-invalid @enderror"
@@ -51,7 +51,7 @@
                      </div>
                      <div class="col-sm-6">
                         <div class="form-group mb-4">
-                           <label class="floating-label" for="email"><i class="fas fa-user"></i>
+                           <label class="floating-label" for="email"><i class="fas fa-envelope"></i>
                               Email</label>
                            <input type="email" class="form-control bg-transparent @error('email') is-invalid @enderror"
                               name="email" value="{{ isset($user) ? $user->email : old('email') }}" id="email">
@@ -62,12 +62,12 @@
                      </div>
                      <div class="col-sm-6">
                         <div class="form-group mb-4">
-                           <label class="floating-label" for="password"><i class="fas fa-user"></i> Change
+                           <label class="floating-label" for="password"><i class="fas fa-unlock"></i> Change
                               Password</label>
                            <input type="password"
-                              class="form-control bg-transparent @error('new_password') is-invalid @enderror"
+                              class="form-control bg-transparent @error('password') is-invalid @enderror"
                               name="password" id="password">
-                           @error('new_password')
+                           @error('password')
                            <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
                            @enderror
                            <small id="emailHelp" class="form-text text-muted">Kosongkan jika tidak ingin

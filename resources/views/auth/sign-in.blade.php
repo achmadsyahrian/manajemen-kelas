@@ -39,8 +39,24 @@
                      @elseif(session()->has('regisSuccess'))
                         <x-sweetalert type="success" head="Akun Berhasil Didaftarkan!" body="{{ session('regisSuccess') }}" ></x-sweetalert>
                      @endif
-                     <x-forms.form-input type="username" label="Username" name="username" value="{{ old('username') }}"></x-forms.form-input>
-                     <x-forms.form-input type="password" label="Password" name="password" value="{{ old('password') }}"></x-forms.form-input>
+							<div class="form-group mb-4">
+                        <label class="floating-label" for="username"><i class="fas fa-at"></i>
+                           Username</label>
+                        <input type="text" class="form-control bg-transparent @error('username') is-invalid @enderror"
+                           name="username" value="{{ old('username') }}" id="username">
+                        @error('username')
+                        <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
+                        @enderror
+                     </div>
+							<div class="form-group mb-4">
+                        <label class="floating-label" for="password"><i class="fas fa-lock"></i>
+                           Password</label>
+                        <input type="password" class="form-control bg-transparent @error('password') is-invalid @enderror"
+                           name="password" value="{{ old('password') }}" id="password">
+                        @error('password')
+                        <x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
+                        @enderror
+                     </div>
                      <button class="btn btn-block btn-primary mb-4">Sign In</button>
                   </form>
 						<p class="mb-0 text-muted">Don't have an account? <a href="sign-up" class="f-w-400">Sign Up</a></p>

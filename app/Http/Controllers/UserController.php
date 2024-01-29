@@ -22,7 +22,7 @@ class UserController extends Controller
         });
     }
 
-     
+
     public function index()
     {
         $logUser = Auth::user();
@@ -78,7 +78,7 @@ class UserController extends Controller
             'userProfilePhoto' => $this->userProfilePhoto
         ]);
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -97,9 +97,18 @@ class UserController extends Controller
     public function update(User $user, UserRequest $request)
     {
         $user = User::find($user->id);
-        $user->update($request->all());
+        $validatedData = $request->validated();
+        if (empty($validatedData['password'])) {
+            unset($validatedData['password']);
+        } else {
+            $validatedData['password'] = bcrypt($validatedData['password']);
+        }
+
+        $user->update($validatedData);
+
         return redirect('/user')->with('success', 'User Berhasil Disimpan!');
     }
+
 
     public function updateProfile(User $user, Request $request)
     {
@@ -146,20 +155,19 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->destroy($user->id);  
+        $user->destroy($user->id);
         return redirect('/user')->with('success', 'User Berhasil Dihapus!');
     }
 
     // User Activation
     public function activated(User $user)
     {
-        $user->update(['status' => 'active']);  
+        $user->update(['status' => 'active']);
         return redirect('/user')->with('success', 'User Berhasil Diaktivasi!');
     }
-    public function disable(User $user) 
+    public function disable(User $user)
     {
-        $user->update(['status' => 'disabled']);  
+        $user->update(['status' => 'disabled']);
         return redirect('/user')->with('success', 'User Berhasil Dinonaktifkan!');
     }
-    
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,7 +34,7 @@ class ProfileController extends Controller
         $student = $user->student;
         $userController->validateStudentData($request, $student);
 
-        return redirect('/')->with('success', 'Data Berhasil Disimpan!');
+        return redirect(RouteServiceProvider::HOME)->with('success', 'Data Berhasil Disimpan!');
     }
 
 }

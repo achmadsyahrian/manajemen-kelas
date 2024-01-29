@@ -29,10 +29,42 @@
 						<form action="/sign-up" method="POST">
 							@csrf
 							<h4 class="mb-3 f-w-800">SIGN UP</h4>
-                     <x-forms.form-input type="text" label="Name" name="name" value="{{ old('name') }}"></x-forms.form-input>
-                     <x-forms.form-input type="username" label="Username" name="username" value="{{ old('username') }}"></x-forms.form-input>
-                     <x-forms.form-input type="text" label="Email" name="email" value="{{ old('email') }}"></x-forms.form-input>
-                     <x-forms.form-input type="password" label="Password" name="password" value="{{ old('password') }}"></x-forms.form-input>
+							<div class="form-group mb-4">
+								<label class="floating-label" for="name"><i class="fas fa-user"></i>
+									Name</label>
+								<input type="text" class="form-control bg-transparent @error('name') is-invalid @enderror"
+									name="name" value="{{ old('name') }}" id="name">
+								@error('name')
+								<x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
+								@enderror
+							</div>
+							<div class="form-group mb-4">
+								<label class="floating-label" for="username"><i class="fas fa-at"></i>
+									Username</label>
+								<input type="text" class="form-control bg-transparent @error('username') is-invalid @enderror"
+									name="username" value="{{ old('username') }}" id="username">
+								@error('email')
+								<x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
+								@enderror
+							</div>
+							<div class="form-group mb-4">
+								<label class="floating-label" for="email"><i class="fas fa-envelope"></i>
+									Email</label>
+								<input type="text" class="form-control bg-transparent @error('email') is-invalid @enderror"
+									name="email" value="{{ old('email') }}" id="email">
+								@error('email')
+								<x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
+								@enderror
+							</div>
+							<div class="form-group mb-4">
+								<label class="floating-label" for="password"><i class="fas fa-lock"></i>
+									Password</label>
+								<input type="password" class="form-control bg-transparent @error('password') is-invalid @enderror"
+									name="password" value="{{ old('password') }}" id="password">
+								@error('password')
+								<x-forms.invalid-feedback>{{ $message }}</x-forms.invalid-feedback>
+								@enderror
+							</div>
 							<button type="submit" class="btn btn-block btn-primary mb-4">Sign Up</button>
 						</form>
 						<p class="mb-2">Already have an account? <a href="sign-in" class="f-w-400">Sign In</a></p>
